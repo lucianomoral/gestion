@@ -1,0 +1,6 @@
+function cargarLista(){
+    
+    alert ("CHE");
+    
+    
+}

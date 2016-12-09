@@ -1,0 +1,409 @@
+body{
+    
+    background-image: url("../imgs/fondo.jpg");
+    
+    /*background-image: url("http://fondos.gratis.es/fondos_webs/agua/agua08.jpg");*/
+    
+}
+
+#formLogin{
+    
+    text-align: center;
+    margin-top: 10%;
+    
+}
+
+.labelLogin{
+    
+    color: white;
+    font-weight: bold;
+    
+}
+
+.inputLogin{
+    
+    border: hidden;
+    
+}
+
+.encabezado{
+    
+    text-align: center;
+    
+}
+
+.menuPrincipal{
+    
+    margin: auto;
+    
+}
+
+.menuItem, .subMenuItem{
+    
+    padding: 5px;
+    border: solid 1px black;
+    
+}
+
+.menuLink, .subMenuLink{
+    
+    text-decoration: none;
+    color: black;
+    font-family: fantasy;
+    font-weight: 100;
+}
+
+li li{
+    
+    visibility: hidden;
+    display: none;
+    
+}
+
+ul:hover li{
+    
+    visibility: visible;
+    
+}
+
+.menuItem:hover{
+    
+    background: -webkit-linear-gradient(left, rgb(115, 118, 85), rgb(103, 119, 49));
+    
+}
+
+.menuItem:hover .menuLink{
+    
+    color: white;
+    
+}
+
+.separador{
+    
+    border: solid 1px black;
+    margin-top: 2%;
+    clear: both;
+    
+}
+
+.main{
+    
+    margin: auto;
+    text-align: center;
+    margin: 15% 0;
+}
+
+#msjBienvenida{
+    
+    font-size: 2em;
+    font-weight: bold;
+    
+}
+
+#pie{
+    
+    font-size: 0.8em;
+    clear: both;
+    text-align: center;
+    margin-top: 2%;
+}
+
+#clienteLista{
+    
+    position: relative;
+    left: 3%;
+    margin-bottom: 2%;
+    margin-top: 3%;
+    margin-left: 40%;
+    
+}
+
+.labelGral{
+    
+    font-weight: bold;
+    font-size: 1.1em;
+    
+}
+
+.organizador{
+    
+    display: inline-block;
+    
+}
+
+#cliente, #lista, #factAbiertas, #descripcion{
+    
+    font-size: 1.05em;
+    font-family: "Lucida Grande";
+    background: -webkit-linear-gradient(left, #957c29, #d1a73c);
+    color: white;
+}
+
+.option{
+    
+    color: black;
+    
+}
+
+.labelBloq{
+    
+    text-decoration: underline;
+    font-family: Verdana;
+    font-size: 0.8em;
+    text-shadow: black 0.5px 0.3px 5px;
+    
+}
+
+.inputBloqueado{
+    
+    background-color: rgba(115, 118, 95, 0.8);
+    border: hidden;
+    font-weight: bold;
+    text-align: center;
+    width: 30%;
+    box-shadow: #41480e 2px 2px 10px;
+    
+}
+
+#divZonaIzq{
+
+    position: relative;
+    left: 3%;
+    width: 30%;
+    float: left;
+    
+}
+
+#busqProd{
+    
+    margin-bottom: 1%;
+
+}
+
+#precioCant{
+    
+    position: relative;
+    left: 3%;
+    margin-top: 2%;
+    float: left;
+}
+
+#precioCant input[type="number"]{
+    
+    width: 50%;
+    background-color: #393c17;
+    color: white;
+    font-weight: bold;
+    border: hidden;
+    box-shadow: black 1px 1px 5px;
+    text-align: center;
+    
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-inner-outer-button{
+    
+    -webkit-appearance: none;
+    margin: 0;
+    
+}
+
+#tablaFact{
+    
+    float: left;
+    display: inline;
+    margin-left: 5%;
+}
+
+#tablaFact td{
+    
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+}
+
+#consultas table{
+    
+    margin: 2% auto;
+    
+}
+
+#consultas td{
+    
+    border: 1px solid black;
+    text-align: center;
+    
+}
+
+#consultas a{
+    
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: Arial;
+    
+}
+
+#consultas td:hover{
+    
+    background: #426d1d;
+    
+}
+
+#consultas td:hover a{
+    
+    color: white;
+    
+}
+
+#divFacturasCerradas{
+    
+    margin-left: 40%;
+    
+}
+
+#formConsultaPrecios{
+    
+    margin-top: 1%;
+    margin-left: 2%;
+    
+}
+
+#divBuscaPrecios{
+    
+    float: left;
+    margin-right: 3%;
+    
+}
+
+.table td,
+.table th, 
+#tablaConsultaPrecios td,
+#tablaResultados td,
+#tablaResultados th,
+#tablaLista td,
+#tablaLista th{
+    
+    background-color: black;
+    border: 1.5px solid white;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    
+    
+}
+
+#agregarCliente, #eliminarCliente, #generarLista{
+    
+    margin-top: 2%;
+    
+}
+
+#botonesBusq, #divTablaResultados, #divTablaLista{
+    
+    float: left;
+    
+}
+
+#margen{
+    
+    text-align: center;
+    background: #5e6c25;
+    color: white;
+    font-weight: bold;
+    width: 20%;
+    border: hidden;
+    
+}
+
+#divTablaLista{
+    
+    position: fixed;
+    left: 65%;
+    top: 20%;
+    
+}
+
+#divTablaResultados{
+    
+    margin-left: -7%;
+    
+}
+
+#grupo {
+    
+    width: 50%;
+    
+}
+
+.modal{
+    
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    
+}
+
+.modalConteiner {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+.cerrar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#divActualizaPrecios input[readonly]{
+    
+    background: #bab5b5;
+    border: 0px;
+    text-align: center;
+    
+}
+
+#tableActualizaPrecios, 
+#tableActualizaPrecios input{
+    
+    width: 100%;
+    
+}
+
+#guardar{
+    
+    
+    
+}
+
+#tableUltimosPrecios {
+    
+    float: left;
+    margin-left: 5%;
+    
+}
+
+#parmBusqProd{
+
+    float: left;
+    
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Bootstrap</title>
+    
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script>
+
+        $("document").ready(function(){
+            
+            $(".btn").click(function(){
+                
+                $(this).button('toggle');
+            
+            });
+            
+        });
+
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Pruebas con Bootstrap</h2>
+<button type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar</button><br><br>
+<button type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</button><br><br>
+<button type="button" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-remove"></span> Cerrar</button><br><br>
+<button type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Volver</button><br><br>
+
+<span id="mas" class="glyphicon glyphicon-trash"></span><br><br>
+
+<table class="table table-hover table-striped table-bordered">
+    <tr>
+        <td class = 'caption' colspan = 5>Distribuidora DIGUS</td>
+    </tr>
+    <tr>
+        <th>Nro:</th>
+        <th colspan = 4> 1</th>
+    </tr>
+    <tr class = 'cabecera'>
+        <td>Cód.</td>
+        <td>Nombre</td>
+        <td>Cantidad</td>
+        <td>Precio</td>
+        <td>Total</td>
+    </tr><tr class='lineas'>
+        <td>4013</td>
+        <td>TURRONES X25 GRS.</td>
+        <td>600</td>
+        <td>$ 2.34</td>
+        <td>$ 1404.00</td></tr><tr class='lineas'>
+        <td>10178</td>
+        <td>MOGUL ANILLOS 4x1Kg</td>
+        <td>4</td>
+        <td>$ 88.75</td>
+        <td>$ 355.00</td></tr><tr class='lineas'>
+        <td>10562</td>
+        <td>MOGUL VIOLETTA 12x12x25gr</td>
+        <td>120</td>
+        <td>$ 34.35</td>
+        <td>$ 4122.00</td></tr><tr><td colspan = 3></td><td>Total</td><td> $ 5881</td></tr>
+</table>
+
+<script>$('[data-toggle="tooltip"]').tooltip();</script>
+
+<style>
+
+    .btn-success:hover{
+        
+        color: green;
+        background: white;
+        
+    }
+    
+    .btn-danger:hover{
+        
+        color: red;
+        background: white;
+        
+    }
+    
+    
+    .btn-warning:hover{
+        
+        color: orange;
+        background: white;
+        
+    }
+    
+    .btn-primary:hover{
+        
+        color: midnightblue;
+        background: white;
+        
+    }
+    
+</style>
+
+</div>
+
+</body>
+</html>

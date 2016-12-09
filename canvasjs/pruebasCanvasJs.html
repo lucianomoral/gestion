@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html>
+<head>
+
+    <title></title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="">
+    
+    <script src="canvasjs.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    
+    <script>
+    
+    window.onload = function () {
+	var chart = new CanvasJS.Chart("contenedor",
+	{
+		title:{
+			text: "Total ventas"
+		},
+                animationEnabled: true,
+		legend:{
+			verticalAlign: "bottom",
+			horizontalAlign: "center"
+		},
+		data: [
+		{        
+			indexLabelFontSize: 20,
+			indexLabelFontFamily: "Monospace",       
+			indexLabelFontColor: "darkgrey", 
+			indexLabelLineColor: "darkgrey",        
+			indexLabelPlacement: "outside",
+			type: "pie",       
+			showInLegend: true,
+			toolTipContent: "{y} - <strong>#percent%</strong>",
+			dataPoints: [
+				{  y: 10, legendText:"Arcor", indexLabel: "Arcor" },
+				{  y: 20, legendText:"Chocolates", indexLabel: "Chocolates" },
+				{  y: 30, legendText:"Bagley",exploded: true, indexLabel: "Bagley" },
+				{  y: 40, legendText:"LC" , indexLabel: "LC"},
+				
+			]
+		}
+		]
+	});
+	chart.render();
+}
+    
+    </script>
+
+</head>
+<body>
+
+<div id="contenedor" style="height: 300px; width: 100%;"></div>
+
+</body>
+</html>
