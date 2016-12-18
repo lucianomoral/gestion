@@ -2,8 +2,15 @@
 
 require_once("Conector.class.php");
 
+echo "1";
+
 $conexion = new Conector;
+
+echo "2";
+
 $conexion->connect();
+
+echo "3";
 
 if (isset($_GET['clienteAgregar'])){
 
