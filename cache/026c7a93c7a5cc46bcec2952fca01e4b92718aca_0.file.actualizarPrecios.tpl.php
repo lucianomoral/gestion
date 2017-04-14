@@ -1,28 +1,28 @@
-<?php /* Smarty version 3.1.24, created on 2016-07-10 21:52:49
-         compiled from "C:/wamp/www/Kiosco/templates/actualizarPrecios.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 21:03:33
+         compiled from "/var/www/html/kioscogestion/templates/actualizarPrecios.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:319765782a791d29508_78687428%%*/
+/*%%SmartyHeaderCode:1074678262585723d542e610_14126080%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '362a5c917286785edacea5fe3edc1ae3bc9bd84a' => 
+    '026c7a93c7a5cc46bcec2952fca01e4b92718aca' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/actualizarPrecios.tpl',
-      1 => 1468180073,
+      0 => '/var/www/html/kioscogestion/templates/actualizarPrecios.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '319765782a791d29508_78687428',
+  'nocache_hash' => '1074678262585723d542e610_14126080',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5782a791d6b8f7_56196490',
+  'unifunc' => 'content_585723d543b256_79066123',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5782a791d6b8f7_56196490')) {
-function content_5782a791d6b8f7_56196490 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_585723d543b256_79066123')) {
+function content_585723d543b256_79066123 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '319765782a791d29508_78687428';
+$_smarty_tpl->properties['nocache_hash'] = '1074678262585723d542e610_14126080';
 ?>
 <!DOCTYPE>
 <html>

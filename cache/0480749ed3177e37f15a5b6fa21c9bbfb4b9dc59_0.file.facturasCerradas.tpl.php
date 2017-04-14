@@ -1,19 +1,19 @@
-<?php /* Smarty version 3.1.24, created on 2016-08-20 14:35:19
-         compiled from "C:/wamp/www/Kiosco/templates/facturasCerradas.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 21:14:34
+         compiled from "/var/www/html/kioscogestion/templates/facturasCerradas.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:2739157b84e879ef436_32723477%%*/
+/*%%SmartyHeaderCode:12888516115857266aa1c0b7_63400730%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'be99352be22c197f36e7ba364b618736b362594a' => 
+    '0480749ed3177e37f15a5b6fa21c9bbfb4b9dc59' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/facturasCerradas.tpl',
-      1 => 1468180152,
+      0 => '/var/www/html/kioscogestion/templates/facturasCerradas.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2739157b84e879ef436_32723477',
+  'nocache_hash' => '12888516115857266aa1c0b7_63400730',
   'variables' => 
   array (
     'clientes' => 0,
@@ -23,13 +23,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_57b84e87c88c71_66249592',
+  'unifunc' => 'content_5857266aa2eef4_04057416',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57b84e87c88c71_66249592')) {
-function content_57b84e87c88c71_66249592 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5857266aa2eef4_04057416')) {
+function content_5857266aa2eef4_04057416 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '2739157b84e879ef436_32723477';
+$_smarty_tpl->properties['nocache_hash'] = '12888516115857266aa1c0b7_63400730';
 ?>
 <!DOCTYPE>
 <html>

@@ -1,28 +1,28 @@
-<?php /* Smarty version 3.1.24, created on 2016-07-10 21:51:28
-         compiled from "C:/wamp/www/Kiosco/templates/main.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 12:57:19
+         compiled from "/var/www/html/kioscogestion/templates/main.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:66395782a740819820_68192628%%*/
+/*%%SmartyHeaderCode:6280413115856b1df192827_61171398%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'e2bf0d716c3c985661210528777e7b7bf9e7e78b' => 
+    'bc2d47365c8927da7023a29ef6b048adf2b44c78' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/main.tpl',
-      1 => 1468180235,
+      0 => '/var/www/html/kioscogestion/templates/main.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '66395782a740819820_68192628',
+  'nocache_hash' => '6280413115856b1df192827_61171398',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5782a7408543d4_37408879',
+  'unifunc' => 'content_5856b1df198f09_25454588',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5782a7408543d4_37408879')) {
-function content_5782a7408543d4_37408879 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5856b1df198f09_25454588')) {
+function content_5856b1df198f09_25454588 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '66395782a740819820_68192628';
+$_smarty_tpl->properties['nocache_hash'] = '6280413115856b1df192827_61171398';
 ?>
 <!DOCTYPE>
 <html>

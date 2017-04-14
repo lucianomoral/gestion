@@ -15,7 +15,7 @@ for ($i = 0; $i < $cant; $i++){
 
 		$idArticulo = $_GET[$i];
 
-		$sql = "SELECT * FROM precios WHERE IdArticulo = ? AND fecha = (SELECT MAX(fecha) FROM PRECIOS)";
+		$sql = "SELECT * FROM precios WHERE IdArticulo = ? AND fecha = (SELECT MAX(fecha) FROM precios)";
 
 		$parm = array($idArticulo);
 

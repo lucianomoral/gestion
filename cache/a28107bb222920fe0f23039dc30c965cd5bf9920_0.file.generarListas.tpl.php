@@ -1,19 +1,19 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-15 04:05:38
-         compiled from "C:/wamp/www/Kiosco/templates/generarListas.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 21:20:41
+         compiled from "/var/www/html/kioscogestion/templates/generarListas.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:3126557104c72d03da5_43945059%%*/
+/*%%SmartyHeaderCode:350525874585727d90f4c59_77161234%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'ae12cc341ee5306ece45c1abd402a54ddcaa5642' => 
+    'a28107bb222920fe0f23039dc30c965cd5bf9920' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/generarListas.tpl',
-      1 => 1460685816,
+      0 => '/var/www/html/kioscogestion/templates/generarListas.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3126557104c72d03da5_43945059',
+  'nocache_hash' => '350525874585727d90f4c59_77161234',
   'variables' => 
   array (
     'idLista' => 0,
@@ -23,19 +23,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_57104c72e6b586_73234077',
+  'unifunc' => 'content_585727d9108713_64727216',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57104c72e6b586_73234077')) {
-function content_57104c72e6b586_73234077 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_585727d9108713_64727216')) {
+function content_585727d9108713_64727216 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '3126557104c72d03da5_43945059';
+$_smarty_tpl->properties['nocache_hash'] = '350525874585727d90f4c59_77161234';
 ?>
 <!DOCTYPE>
 <html>
 <head>
 
-    <title>Listado de Consultas</title>
+    <title>Generar listas</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="estilos/estilos.css">
@@ -75,7 +75,7 @@ $_smarty_tpl->properties['nocache_hash'] = '3126557104c72d03da5_43945059';
             <td class = "menuItem"><a href="generarPedidos.php" class = "menuLink">Generar pedidos</a></td>
             <td class = "menuItem"><a href="listas.php" class = "menuLink">Generar listas</a></td>
             <td class = "menuItem"><a href="precios.php" class = "menuLink">Precios</a></td>
-            <td class = "menuItem"><a href="" class = "menuLink">Productos</a></td>
+            <td class = "menuItem"><a href="productos.php" class = "menuLink">Productos</a></td>
             <td class = "menuItem"><a href="clientes.php" class = "menuLink">Clientes</a></td>
             <td class = "menuItem"><a href="listadoConsultas.php" class = "menuLink">Reportes / consultas</a></td>
         </tr>

@@ -1,28 +1,28 @@
-<?php /* Smarty version 3.1.24, created on 2016-07-10 21:52:39
-         compiled from "C:/wamp/www/Kiosco/templates/consultaPrecios.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 19:35:22
+         compiled from "/var/www/html/kioscogestion/templates/consultaPrecios.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:261235782a787406017_95722405%%*/
+/*%%SmartyHeaderCode:97000239858570f2a0853a1_04583170%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'ee982093befcfa280a68b18797bc140cb6af75f3' => 
+    '02c813557928e812d2a315c3b7818cccdec63779' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/consultaPrecios.tpl',
-      1 => 1468180106,
+      0 => '/var/www/html/kioscogestion/templates/consultaPrecios.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '261235782a787406017_95722405',
+  'nocache_hash' => '97000239858570f2a0853a1_04583170',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5782a787442ae6_23110558',
+  'unifunc' => 'content_58570f2a095715_07755330',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5782a787442ae6_23110558')) {
-function content_5782a787442ae6_23110558 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_58570f2a095715_07755330')) {
+function content_58570f2a095715_07755330 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '261235782a787406017_95722405';
+$_smarty_tpl->properties['nocache_hash'] = '97000239858570f2a0853a1_04583170';
 ?>
 <!DOCTYPE>
 <html>

@@ -1,34 +1,34 @@
-<?php /* Smarty version 3.1.24, created on 2016-07-10 21:51:28
-         compiled from "C:/wamp/www/Kiosco/templates/main.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 21:20:37
+         compiled from "/var/www/html/kioscogestion/templates/datosListas.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:66395782a740819820_68192628%%*/
+/*%%SmartyHeaderCode:1049600397585727d5738d28_12812459%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'e2bf0d716c3c985661210528777e7b7bf9e7e78b' => 
+    '31ef42255ad94cff42b53f9b879c86f9dec666eb' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/main.tpl',
-      1 => 1468180235,
+      0 => '/var/www/html/kioscogestion/templates/datosListas.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '66395782a740819820_68192628',
+  'nocache_hash' => '1049600397585727d5738d28_12812459',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5782a7408543d4_37408879',
+  'unifunc' => 'content_585727d57497a9_32166358',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5782a7408543d4_37408879')) {
-function content_5782a7408543d4_37408879 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_585727d57497a9_32166358')) {
+function content_585727d57497a9_32166358 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '66395782a740819820_68192628';
+$_smarty_tpl->properties['nocache_hash'] = '1049600397585727d5738d28_12812459';
 ?>
 <!DOCTYPE>
 <html>
 <head>
 
-    <title>Página principal</title>
+    <title>Generar listas</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="estilos/estilos.css">
@@ -36,11 +36,28 @@ $_smarty_tpl->properties['nocache_hash'] = '66395782a740819820_68192628';
     <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"><?php echo '</script'; ?>
 >
-
+    
     <?php echo '<script'; ?>
- src="js/main.js"><?php echo '</script'; ?>
 >
     
+        $("document").ready(function(){
+        
+            $("form").submit(function(){
+
+                if($("#listaDesc").val() == ""){
+
+                    alert("Completar descripción.");
+
+                    return false;
+
+                }
+
+            });
+        
+        });
+    
+    <?php echo '</script'; ?>
+>
     
 </head>
 <body>
@@ -64,7 +81,20 @@ $_smarty_tpl->properties['nocache_hash'] = '66395782a740819820_68192628';
 
 <div class="separador"></div>
 
-<section class="main"><p id="msjBienvenida"> Bienvenido! </p></section>
+<section class="query">
+<div id="generarLista">
+
+<form action="generarListas.php" method="get">
+   
+    <label for="descripcion" class="labelGral">Descripcion: </label><input type="text" name="listaDesc" id="listaDesc" autocomplete = "off"><br><br>
+    <input type="submit" value="Agregar"><br><br>
+    <a href = "listas.php"><input type="button" value="Volver"></a><br><br>
+    
+</form>
+
+</div>        
+    
+</section>
 
 <div class="separador"></div>
 

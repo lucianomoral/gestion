@@ -1,34 +1,34 @@
-<?php /* Smarty version 3.1.24, created on 2016-07-10 21:51:28
-         compiled from "C:/wamp/www/Kiosco/templates/main.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 19:53:11
+         compiled from "/var/www/html/kioscogestion/templates/listas.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:66395782a740819820_68192628%%*/
+/*%%SmartyHeaderCode:910336098585713574f7273_29478433%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'e2bf0d716c3c985661210528777e7b7bf9e7e78b' => 
+    'c84a14678618516820f651519f05fa475186f511' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/main.tpl',
-      1 => 1468180235,
+      0 => '/var/www/html/kioscogestion/templates/listas.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '66395782a740819820_68192628',
+  'nocache_hash' => '910336098585713574f7273_29478433',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5782a7408543d4_37408879',
+  'unifunc' => 'content_58571357506527_76438952',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5782a7408543d4_37408879')) {
-function content_5782a7408543d4_37408879 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_58571357506527_76438952')) {
+function content_58571357506527_76438952 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '66395782a740819820_68192628';
+$_smarty_tpl->properties['nocache_hash'] = '910336098585713574f7273_29478433';
 ?>
 <!DOCTYPE>
 <html>
 <head>
 
-    <title>Página principal</title>
+    <title>Listas</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="estilos/estilos.css">
@@ -36,11 +36,6 @@ $_smarty_tpl->properties['nocache_hash'] = '66395782a740819820_68192628';
     <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"><?php echo '</script'; ?>
 >
-
-    <?php echo '<script'; ?>
- src="js/main.js"><?php echo '</script'; ?>
->
-    
     
 </head>
 <body>
@@ -64,7 +59,17 @@ $_smarty_tpl->properties['nocache_hash'] = '66395782a740819820_68192628';
 
 <div class="separador"></div>
 
-<section class="main"><p id="msjBienvenida"> Bienvenido! </p></section>
+<section class="query">
+<div id="consultas">
+<table>
+    <tr><td><a href = "datosListas.php">Generar</a></td></tr>
+    <tr><td><a href = "listasGuardadas.php">Listas guardadas</a></td></tr>
+    <tr><td><a href = "main.php">Volver</a></td></tr>
+</table>
+</div>
+        
+    
+</section>
 
 <div class="separador"></div>
 

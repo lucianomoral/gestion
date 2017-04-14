@@ -1,19 +1,19 @@
-<?php /* Smarty version 3.1.24, created on 2016-07-10 21:44:52
-         compiled from "C:/wamp/www/Kiosco/templates/estadisticas.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 19:53:17
+         compiled from "/var/www/html/kioscogestion/templates/estadisticas.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:318405782a5b4b21c85_73033420%%*/
+/*%%SmartyHeaderCode:15810257105857135e00f2d6_18506292%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '93c10dd8cac966dc683c3bdd149a032e05daa8b4' => 
+    '4862b7cf76c3d2984b64fa306e45ba6dfe3a55c7' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/estadisticas.tpl',
-      1 => 1468179774,
+      0 => '/var/www/html/kioscogestion/templates/estadisticas.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '318405782a5b4b21c85_73033420',
+  'nocache_hash' => '15810257105857135e00f2d6_18506292',
   'variables' => 
   array (
     'topProductos' => 0,
@@ -25,13 +25,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5782a5b4c8f702_44562136',
+  'unifunc' => 'content_5857135e02da60_58667130',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5782a5b4c8f702_44562136')) {
-function content_5782a5b4c8f702_44562136 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5857135e02da60_58667130')) {
+function content_5857135e02da60_58667130 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '318405782a5b4b21c85_73033420';
+$_smarty_tpl->properties['nocache_hash'] = '15810257105857135e00f2d6_18506292';
 ?>
 <!DOCTYPE>
 <html>

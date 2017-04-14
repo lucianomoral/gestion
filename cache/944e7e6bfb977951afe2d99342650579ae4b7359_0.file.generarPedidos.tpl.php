@@ -1,19 +1,19 @@
-<?php /* Smarty version 3.1.24, created on 2016-07-10 21:51:19
-         compiled from "C:/wamp/www/Kiosco/templates/generarPedidos.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 19:35:12
+         compiled from "/var/www/html/kioscogestion/templates/generarPedidos.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:258815782a737ef7807_10404631%%*/
+/*%%SmartyHeaderCode:7550031858570f20c74917_80069533%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '722a03d56ef5ec6195cf8f76105a52b7d9e58c22' => 
+    '944e7e6bfb977951afe2d99342650579ae4b7359' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/generarPedidos.tpl',
-      1 => 1468180171,
+      0 => '/var/www/html/kioscogestion/templates/generarPedidos.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '258815782a737ef7807_10404631',
+  'nocache_hash' => '7550031858570f20c74917_80069533',
   'variables' => 
   array (
     'clientes' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5782a73802e307_75586835',
+  'unifunc' => 'content_58570f20c98e54_37162895',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5782a73802e307_75586835')) {
-function content_5782a73802e307_75586835 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_58570f20c98e54_37162895')) {
+function content_58570f20c98e54_37162895 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '258815782a737ef7807_10404631';
+$_smarty_tpl->properties['nocache_hash'] = '7550031858570f20c74917_80069533';
 ?>
 <!DOCTYPE>
 <html>

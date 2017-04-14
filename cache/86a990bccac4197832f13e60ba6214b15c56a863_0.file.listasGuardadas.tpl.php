@@ -1,19 +1,19 @@
-<?php /* Smarty version 3.1.24, created on 2016-07-10 21:44:31
-         compiled from "C:/wamp/www/Kiosco/templates/listasGuardadas.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 21:27:59
+         compiled from "/var/www/html/kioscogestion/templates/listasGuardadas.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:262585782a59fe59626_51377459%%*/
+/*%%SmartyHeaderCode:16279070035857298f46dae1_69129228%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'f21b3fd2e28f818b69587776acfa864aee2cbded' => 
+    '86a990bccac4197832f13e60ba6214b15c56a863' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/listasGuardadas.tpl',
-      1 => 1468179831,
+      0 => '/var/www/html/kioscogestion/templates/listasGuardadas.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '262585782a59fe59626_51377459',
+  'nocache_hash' => '16279070035857298f46dae1_69129228',
   'variables' => 
   array (
     'listasGuardadas' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5782a59fed8f56_10206711',
+  'unifunc' => 'content_5857298f480585_49714373',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5782a59fed8f56_10206711')) {
-function content_5782a59fed8f56_10206711 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5857298f480585_49714373')) {
+function content_5857298f480585_49714373 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '262585782a59fe59626_51377459';
+$_smarty_tpl->properties['nocache_hash'] = '16279070035857298f46dae1_69129228';
 ?>
 <!DOCTYPE>
 <html>
@@ -49,7 +49,6 @@ $_smarty_tpl->properties['nocache_hash'] = '262585782a59fe59626_51377459';
         var dataOptions = new Array();
         
         $("document").ready(function(){
-
             
             var i = 0;
             
@@ -120,7 +119,7 @@ $_smarty_tpl->properties['nocache_hash'] = '262585782a59fe59626_51377459';
             <td class = "menuItem"><a href="generarPedidos.php" class = "menuLink">Generar pedidos</a></td>
             <td class = "menuItem"><a href="listas.php" class = "menuLink">Generar listas</a></td>
             <td class = "menuItem"><a href="precios.php" class = "menuLink">Precios</a></td>
-            <td class = "menuItem"><a href="" class = "menuLink">Productos</a></td>
+            <td class = "menuItem"><a href="productos.php" class = "menuLink">Productos</a></td>
             <td class = "menuItem"><a href="clientes.php" class = "menuLink">Clientes</a></td>
             <td class = "menuItem"><a href="listadoConsultas.php" class = "menuLink">Reportes / consultas</a></td>
         </tr>

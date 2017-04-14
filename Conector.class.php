@@ -16,13 +16,13 @@ class Conector extends datosConexion{
 
 		try {
 
-			$this->conec = new PDO('mysql:host=' . $this->getHost() . '; dbname=' . $this->getDb(), $this->getUser(), $this->getPass());
+			$this->conec = new PDO('mysql:host=' . $this->getHost() . '; dbname=' . $this->getDb() . '; port=3306', $this->getUser(), $this->getPass());
 
 			$this->conec->exec("SET CHARACTER SET utf8");
 
-		} catch(Exception $e) {
+		} catch(PDOException $e) {
 
-			die("Error al conectar. Pongase en contacto con el administrador. <br><br>" . $e.GetMessage());
+			die("Error al conectar. Pongase en contacto con el administrador. <br><br>" . $e->GetMessage());
 
 		}
 

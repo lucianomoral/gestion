@@ -1,28 +1,28 @@
-<?php /* Smarty version 3.1.24, created on 2016-08-22 01:40:22
-         compiled from "C:/wamp/www/Kiosco/templates/productos.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 19:46:02
+         compiled from "/var/www/html/kioscogestion/templates/productos.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:990357ba3be6b178e3_56207048%%*/
+/*%%SmartyHeaderCode:451315274585711aa461652_99744969%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '1900264ddf0582f697e5c6db2e9f44e1bf2009ca' => 
+    'f9cd371d78f4e2809c4baf0bbae79617679b8310' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/productos.tpl',
-      1 => 1471822811,
+      0 => '/var/www/html/kioscogestion/templates/productos.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '990357ba3be6b178e3_56207048',
+  'nocache_hash' => '451315274585711aa461652_99744969',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_57ba3be6b811c7_99780343',
+  'unifunc' => 'content_585711aa46ca45_62940225',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57ba3be6b811c7_99780343')) {
-function content_57ba3be6b811c7_99780343 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_585711aa46ca45_62940225')) {
+function content_585711aa46ca45_62940225 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '990357ba3be6b178e3_56207048';
+$_smarty_tpl->properties['nocache_hash'] = '451315274585711aa461652_99744969';
 ?>
 <!DOCTYPE>
 <html>

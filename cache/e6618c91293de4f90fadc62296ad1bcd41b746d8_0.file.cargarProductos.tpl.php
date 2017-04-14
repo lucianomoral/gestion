@@ -1,19 +1,19 @@
-<?php /* Smarty version 3.1.24, created on 2016-09-25 21:42:07
-         compiled from "C:/wamp/www/Kiosco/templates/cargarProductos.tpl" */ ?>
+<?php /* Smarty version 3.1.24, created on 2016-12-18 21:04:21
+         compiled from "/var/www/html/kioscogestion/templates/cargarProductos.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:2315557e8288ff0b732_76723831%%*/
+/*%%SmartyHeaderCode:163808421358572405b0b248_75553456%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '100c1fd03398bb3ac5dbf446e1156eb13e0f0180' => 
+    'e6618c91293de4f90fadc62296ad1bcd41b746d8' => 
     array (
-      0 => 'C:/wamp/www/Kiosco/templates/cargarProductos.tpl',
-      1 => 1474832523,
+      0 => '/var/www/html/kioscogestion/templates/cargarProductos.tpl',
+      1 => 1482076303,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2315557e8288ff0b732_76723831',
+  'nocache_hash' => '163808421358572405b0b248_75553456',
   'variables' => 
   array (
     'cliente' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_57e8289002e637_11562470',
+  'unifunc' => 'content_58572405b1be60_08554342',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57e8289002e637_11562470')) {
-function content_57e8289002e637_11562470 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_58572405b1be60_08554342')) {
+function content_58572405b1be60_08554342 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '2315557e8288ff0b732_76723831';
+$_smarty_tpl->properties['nocache_hash'] = '163808421358572405b0b248_75553456';
 ?>
 <!DOCTYPE>
 <html>
