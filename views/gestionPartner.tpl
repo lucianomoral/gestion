@@ -1,64 +1,111 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Google Nexus Website Menu</title>
-		<meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
-		<meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
-		<meta name="author" content="Codrops" />
-		<link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="css/demo.css" />
-		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="js/modernizr.custom.js"></script>
-	</head>
-	<body>
-		<div class="container">
-			<ul id="gn-menu" class="gn-menu-main">
-				<li class="gn-trigger">
-					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-					<nav class="gn-menu-wrapper">
-						<div class="gn-scroller">
-							<ul class="gn-menu">
-								<li class="gn-search-item">
-									<input placeholder="Search" type="search" class="gn-search">
-									<a class="gn-icon gn-icon-search"><span>Search</span></a>
-								</li>
-								<li>
-									<a class="gn-icon gn-icon-download">Downloads</a>
-									<ul class="gn-submenu">
-										<li><a class="gn-icon gn-icon-illustrator">Vector Illustrations</a></li>
-										<li><a class="gn-icon gn-icon-photoshop">Photoshop files</a></li>
-									</ul>
-								</li>
-								<li><a class="gn-icon gn-icon-cog">Settings</a></li>
-								<li><a class="gn-icon gn-icon-help">Help</a></li>
-								<li>
-									<a class="gn-icon gn-icon-archive">Archives</a>
-									<ul class="gn-submenu">
-										<li><a class="gn-icon gn-icon-article">Articles</a></li>
-										<li><a class="gn-icon gn-icon-pictures">Images</a></li>
-										<li><a class="gn-icon gn-icon-videos">Videos</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div><!-- /gn-scroller -->
-					</nav>
-				</li>
-				<li><a href="http://tympanus.net/codrops">Codrops</a></li>
-				<li><a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/HeaderEffects/"><span>Previous Demo</span></a></li>
-				<li><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16030"><span>Back to the Codrops Article</span></a></li>
-			</ul>
-			<header>
-				<h1>Google Nexus Website Menu <span>A sidebar menu as seen on the <a href="http://www.google.com/nexus/index.html">Google Nexus 7</a> page</span></h1>	
-			</header> 
-		</div><!-- /container -->
-		<script src="js/classie.js"></script>
-		<script src="js/gnmenu.js"></script>
-		<script>
-			new gnMenu( document.getElementById( 'gn-menu' ) );
-		</script>
-	</body>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Control Partner</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+    <script src="js/app/site.js"></script>
+    <!-- Bootstrap core CSS -->
+    <!--link href="views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"-->
+
+    <!-- Custom styles for this template -->
+    <link href="views/css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <!--li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li-->
+                <li>
+                    <a href="#" class="renderView"> <span class="glyphicon glyphicon-search"></span> Buscar</a>
+                </li>
+                <li>
+                    <a href="#" class="renderView"> <span class="glyphicon glyphicon-pencil"></span> Novedades </a>
+                </li>
+                <li>
+                    <a href="#" class="renderView"> <span class="glyphicon glyphicon-share-alt"></span>  Movimientos</a>
+                </li>
+                <li>
+                    <a href="#" class="renderView"> <span class="glyphicon glyphicon-wrench"></span> Datos maestros</a>
+                </li>
+                <li>
+                    <a href="#" class="renderView"> <span class="glyphicon glyphicon-equalizer"></span> Consultas</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="content">
+            <div class="container-fluid">
+                <h1>Gestion partner</h1>
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+                <!--p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p-->
+            
+                <table class="table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Luciano</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Gustavo</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Facundo</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Isabel</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Cristina</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--script src="views/vendor/jquery/jquery.min.js"></script>
+    <script src="views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script-->
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
 </html>
