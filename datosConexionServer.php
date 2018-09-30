@@ -2,7 +2,7 @@
 
 class datosConexion{
 	
-	private $hostname= 'localhost';
+	private $hostname= '179.43.121.58';
 	private $usuario = 'root';
 	private $password = 'NAli59rufu';
 	private $db = 'kiosco';
