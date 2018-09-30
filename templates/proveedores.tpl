@@ -2,12 +2,15 @@
 <html>
 <head>
 
-    <title>Listas</title>
+    <title>Proveedores</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="estilos/estilos.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <script src="js/main.js"></script>
+    
     
 </head>
 <body>
@@ -35,13 +38,13 @@
 <section class="query">
 <div id="consultas">
 <table>
-    <tr><td><a href = "datosListas.php">Generar</a></td></tr>
-    <tr><td><a href = "listasGuardadas.php">Listas guardadas</a></td></tr>
+    <tr><td><a href = "agregarProveedores.php">Nuevo proveedor</a></td></tr>
+    <tr><td><a href = "">Editar plantillas</a></td></tr>
+    <tr><td><a href = "nuevaOrdenCompra.php">Nuevo pedido</a></td></tr>
     <tr><td><a href = "main.php">Volver</a></td></tr>
 </table>
 </div>
         
-    
 </section>
 
 <div class="separador"></div>

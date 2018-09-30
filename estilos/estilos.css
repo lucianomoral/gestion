@@ -283,7 +283,9 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-i
 #tablaResultados td,
 #tablaResultados th,
 #tablaLista td,
-#tablaLista th{
+#tablaLista th,
+#tablaPlantilla td,
+#tablaPlantilla th{
     
     background-color: black;
     border: 1.5px solid white;
@@ -321,6 +323,14 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-i
     
     position: fixed;
     left: 65%;
+    top: 20%;
+    
+}
+
+#divTablaPlantilla{
+    
+    position: fixed;
+    left: 20%;
     top: 20%;
     
 }
@@ -406,4 +416,13 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-i
 
     float: left;
     
+}
+
+.editInput{
+
+    border: transparent;
+    background: transparent;
+    text-align: center;
+    color: white;
+
 }

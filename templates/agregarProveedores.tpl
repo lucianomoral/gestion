@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <title>Agregar clientes</title>
+    <title>Agregar proveedores</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="estilos/estilos.css">
@@ -14,22 +14,56 @@
         $("document").ready(function(){
             
             $("#agregar").click(function(){
+            
+                var ok = true;
+                var yesNo;
                 
-               if($("#clienteAgregar").val() == ""){
+               if($("#proveedorAgregar").val() == ""){
                    
                    alert("Falta completar nombre.");
+
+                   ok = false;
+
+               }
+
+               if($("#mailProveedorAgregar").val() == ""){
                    
-               } else {
+                   alert("Falta completar el mail.");
+
+                   ok = false;
+
+               }
+
+                if(ok)
+                {
                    
-                   yesNo = confirm("Desea agregar el cliente " + $("#clienteAgregar").val() + " ?")
+                   yesNo = confirm("Desea agregar el proveedor " + $("#proveedorAgregar").val() + " ?")
                    
                    if(yesNo){
-                       
-                    form = document.forms[0];
-                       
-                    form.action = "maestroClientes.php";
-                   
-                    document.forms[0].submit();             
+
+                    $.ajax({
+                        url: "AJAX.agregarProveedor.php",
+                        data: {
+                            nombreProv: $("#proveedorAgregar").val(),
+                            mailProv: $("#mailProveedorAgregar").val()
+                        },
+                        success: function(ok){
+                            if(ok)
+                            {
+                                alert("Proveedor ingresado."),
+
+                                window.location = "proveedores.php";
+
+                            } else {
+
+                                alert("Se produjo un error al ingresar al proveedor.")
+                            }
+
+                        },
+                        error: function(){
+                            alert("No se pudo agregar el proveedor")
+                        }
+                    });            
                        
                    }
                    
@@ -69,9 +103,10 @@
 <div id="agregarCliente">
    
     <form action="" method="get">
-        <label class="labelGral" for="clienteAgregar">Nombre: </label><input type="text" name="clienteAgregar" id="clienteAgregar" autocomplete = "off" required><br><br>
+        <label class="labelGral" for="proveedorAgregar">Nombre: </label><input type="text" name="proveedorAgregar" id="proveedorAgregar" autocomplete = "off" required><br><br>
+        <label class="labelGral" for="mailProveedorAgregar">Mail: </label><input type="text" name="mailProveedorAgregar" id="mailProveedorAgregar" autocomplete = "off" required><br><br>
         <input type="button" value="Agregar" id="agregar"><br><br>
-        <a href = "clientes.php"><input type="button" value="Volver"></a><br><br>
+        <a href = "proveedores.php"><input type="button" value="Volver"></a><br><br>
     </form>
 </div>
     

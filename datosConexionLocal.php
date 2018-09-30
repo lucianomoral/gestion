@@ -4,8 +4,8 @@ class datosConexion {
 
 	private $host = 'localhost';
 	private $db = 'kiosco';
-	private $user = 'phpmyadmin';
-	private $pass = '1234';
+	private $user = 'root';
+	private $pass = '';
 
 	public function getHost(){
 

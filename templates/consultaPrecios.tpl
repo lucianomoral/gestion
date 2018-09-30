@@ -25,6 +25,7 @@
             <td class = "menuItem"><a href="precios.php" class = "menuLink">Precios</a></td>
             <td class = "menuItem"><a href="productos.php" class = "menuLink">Productos</a></td>
             <td class = "menuItem"><a href="clientes.php" class = "menuLink">Clientes</a></td>
+            <td class = "menuItem"><a href="proveedores.php" class = "menuLink">Proveedores</a></td>
             <td class = "menuItem"><a href="listadoConsultas.php" class = "menuLink">Reportes / consultas</a></td>
         </tr>
     </table>
