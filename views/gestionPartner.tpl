@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
     <script src="js/app/site.js"></script>
+    <script src="js/app/factories/novedadesFactory.js"></script>
+    <script src="js/app/model/novedad.js"></script>
     <!-- Bootstrap core CSS -->
     <!--link href="views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"-->
 
@@ -36,10 +39,10 @@
                     <a href="#" class="renderView"> <span class="glyphicon glyphicon-search"></span> Buscar</a>
                 </li>
                 <li>
-                    <a href="#" class="renderView"> <span class="glyphicon glyphicon-pencil"></span> Novedades </a>
+                    <a href="#" class="renderView" data-view="novedades"> <span class="glyphicon glyphicon-pencil"></span> Novedades </a>
                 </li>
                 <li>
-                    <a href="#" class="renderView"> <span class="glyphicon glyphicon-share-alt"></span>  Movimientos</a>
+                    <a href="#" class="renderView" data-view="movimientos"> <span class="glyphicon glyphicon-share-alt"></span>  Movimientos</a>
                 </li>
                 <li>
                     <a href="#" class="renderView"> <span class="glyphicon glyphicon-wrench"></span> Datos maestros</a>
@@ -52,42 +55,11 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="content">
+        <div>
             <div class="container-fluid">
-                <h1>Gestion partner</h1>
-                <!--p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p-->
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <tr>
-                            <td colspan="2">
-                                <button href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-                                    <span id = "hideshowmenu" class="glyphicon glyphicon-arrow-left"></span>
-                                </button>
-                                <button class="btn btn-success">
-                                    <span id = "hideshowmenu" class="glyphicon glyphicon-plus"></span> Nuevo
-                                </button>
-                                <button class="btn btn-danger">
-                                    <span id = "hideshowmenu" class="glyphicon glyphicon-trash"></span> Eliminar
-                                </button>
-                                <button class="btn btn-info">
-                                    <span id = "hideshowmenu" class="glyphicon glyphicon-floppy-saved"></span> Guardar
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                        </tr>
-                        {$i = 1}
-                        {section name=titulares loop=$titulares}
-                        <tr>
-                            <td>{$titulares[$i]->id}</td>
-                            <td>{$titulares[$i]->nombre}</td>
-                            {$i = $i + 1}
-                        </tr>
-                        {/section}
-                    </table>
+                <div id="content">
+                    <h1>Gestion partner</h1>
+                    <h3>BIENVENIDO</h3>
                 </div>
             </div>
         </div>

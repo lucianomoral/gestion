@@ -1,5 +1,7 @@
 <?php
 
-echo require("views/gestionPartner/novedades.html");
+$view = $_GET['view'];
+
+echo file_get_contents("views/gestionPartner/" . $view . ".html");
 
 ?>

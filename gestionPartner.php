@@ -11,7 +11,7 @@ R::setup('mysql:host=' . $datosConexion->getHost() . ';dbname=' . $datosConexion
 
 R::freeze(TRUE); //Esto es para que no me altere el schema de la base de datos
 
-$titulares = R::findAll('partitular');
+$titulares = R::findAll('partipoconcepto');
 
 $smarty->assign(array(
 

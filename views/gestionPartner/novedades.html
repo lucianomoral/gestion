@@ -1,1 +1,9 @@
-<p>RENDER DE NOVEDADES</p>
+<script src="js/app/viewmodel/novedadesViewModel.js"></script>
+<div id="ko">
+    <div data-bind="foreach:{data:$root.array,as:'n'}">
+        <p data-bind="text:n.nombre"></p>
+    </div>
+
+    <button data-bind="click:$root.prueba">Click</button>
+    <button data-bind="click:$root.borrar">Click</button>
+</div>
