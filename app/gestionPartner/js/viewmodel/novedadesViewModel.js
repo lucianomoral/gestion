@@ -18,7 +18,7 @@ function novedadesViewModel(){
     }
 
     self.borrar = function() {
-        self.array.remove(self.array()[0]);
+        self.array.remove(self.array()[0]); 
 
     }
 
