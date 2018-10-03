@@ -1,8 +1,8 @@
 <?php
 
-require_once("libs/Smarty.class.php");
-require_once("redbean/rb-mysql.php");
-require_once("datosConexionLocal.php");
+require_once("../libs/Smarty.class.php");
+require_once("../vendor/redbean/rb-mysql.php");
+require_once("../../../datosConexionLocal.php");
 
 $datosConexion = new datosConexion;
 $smarty = new Smarty;
@@ -19,6 +19,6 @@ $smarty->assign(array(
 
 ));
 
-$smarty->display("views/gestionPartner.tpl");
+$smarty->display("../views/gestionPartner.tpl");
 
 ?>

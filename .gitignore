@@ -3,3 +3,5 @@ datosConexionLocal.php
 datosConexionServer.php
 pruebaKO.php
 pruebaRedBean.php
+app/gestionPartner/public/cache/
+app/gestionPartner/testfiles/

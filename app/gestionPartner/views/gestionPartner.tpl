@@ -12,14 +12,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-    <script src="js/app/site.js"></script>
-    <script src="js/app/factories/novedadesFactory.js"></script>
-    <script src="js/app/model/novedad.js"></script>
+    <script src="../js/site.js"></script>
+    <script src="../js/factories/novedadesFactory.js"></script>
+    <script src="../js/model/novedad.js"></script>
     <!-- Bootstrap core CSS -->
     <!--link href="views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"-->
 
     <!-- Custom styles for this template -->
-    <link href="views/css/simple-sidebar.css" rel="stylesheet">
+    <link href="../views/css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 

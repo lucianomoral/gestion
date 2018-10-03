@@ -2,7 +2,7 @@ $.renderView = function(view) {
 
     $.ajax({
         method: "GET",
-        url: "AJAX.RenderPartialView.php",
+        url: "../controller/AJAX.RenderPartialView.php",
         data:{
             view: view
         },
