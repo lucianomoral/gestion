@@ -1,9 +1,93 @@
-<script src="../js/viewmodel/novedadesViewModel.js"></script>
+<!--script src="../js/viewmodel/novedadesViewModel.js"></script-->
+<script src="../js/factories/parOrigenFinancieroFactory.js"></script>
+<script src="../js/viewmodel/parOrigenFinancieroViewModel.js"></script>
 <div id="ko">
-    <div data-bind="foreach:{data:$root.array,as:'n'}">
-        <p data-bind="text:n.nombre"></p>
+    <botonera-loca params="Nuevo: $root.Nuevo" />
+    <div id="contenido" class="collapse">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Nombre día</th>
+                    <th>Concepto</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Pendiente</th>
+                    <th>Moneda</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:{data:$root.array,as:'n'}">
+                <tr>
+                    <td data-bind="text:n.fecha"></td>
+                    <td data-bind="text:n.nombre_dia"></td>
+                    <td data-bind="text:n.nombre_concepto"></td>
+                    <td data-bind="text:n.nombre_tipo"></td>
+                    <td data-bind="text:n.valororiginal"></td>
+                    <td data-bind="text:n.valorpendiente"></td>
+                    <td data-bind="text:n.nombre_moneda"></td>
+                </tr>
+            <tbody>
+        </table>
     </div>
-
-    <button data-bind="click:$root.prueba">Click</button>
-    <button data-bind="click:$root.borrar">Click</button>
+    <br>
+    <div id="formulario" class="collapse">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="fecha">Fecha:</label>
+                <div class="col-sm-10">
+                <input type="date" class="form-control" id="fecha">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Concepto:</label>
+                <div class="col-sm-10">
+                <select class="form-control" id="concepto">
+                    <option>HSBC</option>
+                    <option>GUDYS</option>
+                    <option>SCN</option>
+                    <option>Depiladora</option>
+                    <option>BBVA</option>
+                    <option>Gas Oil</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="tipo">Tipo:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="tipo" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="monto">Monto:</label>
+                <div class="col-sm-10">
+                <input type="number" class="form-control" id="monto">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="moneda">Moneda: </label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="moneda" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="observacion">Observaciones: </label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="observacion">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox"> Cobrado en el día</label>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-info">Guardar</button>
+                <button class="btn btn-danger">Cancelar</button>
+                </div>
+            </div>
+            </form>
+    </div>
 </div>

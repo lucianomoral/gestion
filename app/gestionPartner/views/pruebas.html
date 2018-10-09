@@ -1,0 +1,20 @@
+<!--script src="../js/viewmodel/novedadesViewModel.js"></script-->
+<script src="../js/pruebas/pruebas.js"></script>
+<div id="ko">
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:{data:$root.array,as:'n'}">
+                <tr>
+                    <td data-bind="text:n.id"></td>
+                    <td data-bind="text:n.nombre"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -12,9 +12,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-    <script src="../js/site.js"></script>
-    <script src="../js/factories/novedadesFactory.js"></script>
-    <script src="../js/model/novedad.js"></script>
+    
+    <!--KO-->
+    <script src="../js/pruebas/main.js"></script>
+    <script src="../vendor/ko/adaptKO.js"></script>
+    <script src="../js/model/parOrigenFinanciero.js"></script>
+    <!--script src="../js/site.js"></script-->
+    <!--script src="../js/factories/novedadesFactory.js"></script-->
+    <!--script src="../js/model/novedad.js"></script-->
+
     <!-- Bootstrap core CSS -->
     <!--link href="views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"-->
 
@@ -39,6 +45,9 @@
                     <a href="#" class="renderView"> <span class="glyphicon glyphicon-search"></span> Buscar</a>
                 </li>
                 <li>
+                    <a href="#" class="renderView" data-view="home"> <span class="glyphicon glyphicon-home"></span> Inicio</a>
+                </li>
+                <li>
                     <a href="#" class="renderView" data-view="novedades"> <span class="glyphicon glyphicon-pencil"></span> Novedades </a>
                 </li>
                 <li>
@@ -59,23 +68,8 @@
             <div class="container-fluid">
                 <div id="content">
                     <h1>Gestion partner</h1>
-                    <h3>BIENVENIDO</h3>
-                    <div class="btn-group btn-group-justified">
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-                            <span id = "hideshowmenu" class="glyphicon glyphicon-arrow-left"></span>
-                        </a>
-                        <a class="btn btn-success">
-                            <span id = "hideshowmenu" class="glyphicon glyphicon-plus"></span> Nuevo
-                        </a>
-                        <a class="btn btn-danger">
-                            <span id = "hideshowmenu" class="glyphicon glyphicon-trash"></span> Eliminar
-                        </a>
-                        <a class="btn btn-info">
-                            <span id = "hideshowmenu" class="glyphicon glyphicon-floppy-saved"></span> Guardar
-                        </a>
-                    </div>
-                    <div class="table-responsive" name="">
-                        <table class="table table-hover">
+                    <div id="main-content" name="">
+                        <!--table class="table table-hover">
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
@@ -84,7 +78,7 @@
                                 <td>1</td>
                                 <td>PRUEBA</td>
                             </tr>
-                        </table>
+                        </table-->
                     </div>
                 </div>
             </div>
@@ -98,19 +92,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--script src="views/vendor/jquery/jquery.min.js"></script>
     <script src="views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script-->
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-        if ($("#hideshowmenu").hasClass("glyphicon-arrow-left")){
-            $("#hideshowmenu").removeClass("glyphicon-arrow-left").addClass("glyphicon-arrow-right");
-        } else {
-            $("#hideshowmenu").removeClass("glyphicon-arrow-right").addClass("glyphicon-arrow-left");
-        }
-    });
-    </script>
 
 </body>
 

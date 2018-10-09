@@ -5,11 +5,12 @@ function novedadesViewModel(){
 
 	self.ready = function(){
         self.factory.getAll().done(function(data){
-            data = JSON.parse(data);
+            /*data = JSON.parse(data);
             $.each(Object.keys(data), function(i, key){
                 console.log(data[key]);
                 self.array.push(new novedad(data[key]));
-            });
+            });*/
+           console.log("ACA");
         });
 	}
 
@@ -18,7 +19,7 @@ function novedadesViewModel(){
     }
 
     self.borrar = function() {
-        self.array.remove(self.array()[0]); 
+        self.array.remove(self.array()[0]);
 
     }
 

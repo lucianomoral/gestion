@@ -4,7 +4,7 @@ function novedadesFactory(){
     self.getAll = function(){
         return $.ajax({
             method: "GET",
-            url: "js/app/factories/dataHandler.php"
+            url: "../controller/dataHandler.php"
         });
     }
 }

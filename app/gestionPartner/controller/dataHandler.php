@@ -3,14 +3,30 @@
 require_once("../../../redbean/rb-mysql.php");
 require_once("../../../datosConexionLocal.php");
 
-$datosConexion = new datosConexion;
+class dataHandler{
 
-R::setup('mysql:host=' . $datosConexion->getHost() . ';dbname=' . $datosConexion->getDb(), $datosConexion->getUser(), $datosConexion->getPass());
+    private $datosConexion;
 
-R::freeze(TRUE); //Esto es para que no me altere el schema de la base de datos
+    //Constructor
+    public function dataHandler(){
 
-$data = R::findAll('partipoconcepto');
+        $this->datosConexion = new datosConexion();
 
-echo json_encode($data);
+        R::setup('mysql:host=' . $this->datosConexion->getHost() . ';dbname=' . $this->datosConexion->getDb(), $this->datosConexion->getUser(), $this->datosConexion->getPass());
+
+        R::freeze(TRUE); //Esto es para que no me altere el schema de la base de datos
+
+    }
+
+    //Devuelve todos una tabla completa
+    public function getAll($tableName){
+
+        $data = R::findAll($tableName);
+
+        return json_encode($data);
+
+    }
+
+}
 
 ?>
