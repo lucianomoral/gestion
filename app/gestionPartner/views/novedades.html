@@ -1,5 +1,7 @@
 <!--script src="../js/viewmodel/novedadesViewModel.js"></script-->
 <script src="../js/factories/parOrigenFinancieroFactory.js"></script>
+<script src="../js/factories/parDireccionFactory.js"></script>
+<script src="../js/factories/parConceptoFactory.js"></script>
 <script src="../js/viewmodel/parOrigenFinancieroViewModel.js"></script>
 <div id="ko">
     <botonera-loca params="Nuevo: $root.Nuevo" />
@@ -16,8 +18,8 @@
                     <th>Moneda</th>
                 </tr>
             </thead>
-            <tbody data-bind="foreach:{data:$root.array,as:'n'}">
-                <tr>
+            <tbody data-bind="foreach:{data:$root.novedadesArray,as:'n'}">
+                <tr data-bind="css: {'success': n.nombre_tipo() == 'INGRESO', 'danger': n.nombre_tipo() != 'INGRESO'}">
                     <td data-bind="text:n.fecha"></td>
                     <td data-bind="text:n.nombre_dia"></td>
                     <td data-bind="text:n.nombre_concepto"></td>
@@ -39,34 +41,35 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Concepto:</label>
+                <label class="control-label col-sm-2" for="concepto">Concepto:</label>
                 <div class="col-sm-10">
-                <select class="form-control" id="concepto">
-                    <option>HSBC</option>
-                    <option>GUDYS</option>
-                    <option>SCN</option>
-                    <option>Depiladora</option>
-                    <option>BBVA</option>
-                    <option>Gas Oil</option>
+                <select class="form-control" id="concepto" data-bind="options:$root.conceptosArray, optionsText:'nombreconcepto', value: $root.conceptoElegido">
                 </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="tipo">Tipo:</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="tipo" disabled>
+                <input type="text" class="form-control" id="tipo" disabled data-bind="textInput: $root.conceptoElegido().nombretipoconcepto">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="monto">Monto:</label>
                 <div class="col-sm-10">
-                <input type="number" class="form-control" id="monto">
+                <input type="number" class="form-control" id="monto" data-bind="textInput: $root.conceptoElegido().valorpredeterminado">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="moneda">Moneda: </label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="moneda" disabled>
+                <input type="text" class="form-control" id="moneda" disabled value="ARS">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="entrega">Entrega: </label>
+                <div class="col-sm-10">
+                <input class= "checkbox-inline" type="checkbox" data-bind="checked: esentrega">
+                <select class="form-control" id="entrega" data-bind="enable: esentrega, options: $root.direccionesArray, optionsText: 'direccion'"></select>
                 </div>
             </div>
             <div class="form-group">
@@ -85,7 +88,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                 <button class="btn btn-info">Guardar</button>
-                <button class="btn btn-danger">Cancelar</button>
+                <button class="btn btn-danger" data-bind="click: Cancelar">Cancelar</button>
                 </div>
             </div>
             </form>

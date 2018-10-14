@@ -2,6 +2,7 @@ ko.components.register('botonera-loca', {
     viewModel: function(params) {
         var self = this;        
         self.Nuevo = params.Nuevo;
+
     },
     template: 
     '<div class="btn-group btn-group-justified">' +
@@ -14,19 +15,8 @@ ko.components.register('botonera-loca', {
         /*'<a class="btn btn-danger">' +
             '<span class="glyphicon glyphicon-trash"></span> Eliminar' +
         '</a>' +
-        '<a class="btn btn-info">' +
+        '<a class="btn btn-info" data-bind="click: Cancelar">' +
             '<span class="glyphicon glyphicon-floppy-saved"></span> Guardar' +
         '</a>' +*/
-    '</div>' +
-    '<script>' +
-        '$("#menu-toggle").click(function(e) {' +
-            'e.preventDefault();' +
-            '$("#wrapper").toggleClass("toggled");' +
-            'if ($("#hideshowmenu").hasClass("glyphicon-arrow-left")){' +
-                '$("#hideshowmenu").removeClass("glyphicon-arrow-left").addClass("glyphicon-arrow-right");' +
-            '} else {' + 
-                '$("#hideshowmenu").removeClass("glyphicon-arrow-right").addClass("glyphicon-arrow-left");' +
-            '}' +
-        '});' +
-    '</script>'
+    '</div>'
 });

@@ -1,11 +1,11 @@
-function parOrigenFinancieroFactory() {
+function parConceptoFactory() {
     var self = this;
 
     self.getAll = function (){
         return $.ajax({
                     method: "GET",
                     data:{
-                        classToCall: 'parOrigenFinancieroService',
+                        classToCall: 'parConceptoService',
                         methodToCall: 'getAllDetailed'
                     },
                     url: "../controller/mainController.php",

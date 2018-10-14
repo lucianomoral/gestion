@@ -1,8 +1,10 @@
 <?php
 
 require_once("parOrigenFinancieroService.php");
+require_once("parConceptoService.php");
+require_once("parDireccionService.php");
 
-if (!isset($_GET['classToCreate'])){
+if (!isset($_GET['classToCall'])){
 
     echo "Clase a instanciar no definida.";
 
@@ -14,10 +16,9 @@ if (!isset($_GET['classToCreate'])){
 
     $classToCreate = "";
     $methodToCall = "";
-    $_class = null;
-    
+    $_class = null;    
 
-    $classToCreate = $_GET['classToCreate'];
+    $classToCreate = $_GET['classToCall'];
     $methodToCall = $_GET['methodToCall'];
 
     $_class = new $classToCreate();

@@ -21,4 +21,5 @@ function OrigenFinanciero(pObj) {
     self.valororiginal = ko.observable(iObj.valororiginal);
     self.valorpendiente = ko.observable(iObj.valorpendiente);
     self.nombre_moneda = ko.observable(iObj.nombre_moneda);
+
 }
