@@ -15,7 +15,8 @@ function parOrigenFinancieroViewModel(){
         idclaseconcepto:0,
         nombreclaseconcepto:""
     }]); // Se inicializa así porque sino da error al bindear porque espera la respuesta del server
-    self.direccionElegida = ko.observable(new parDireccion);
+    self.direccionElegida = ko.observable(new parDireccion());
+    self.direccionACrear = ko.observable(new parDireccion());
     self.conceptoElegido = ko.observable(new parConcepto());
     self.esentrega = ko.observable(false);
  
@@ -61,6 +62,23 @@ function parOrigenFinancieroViewModel(){
     self.Cancelar = function(){
         $("#contenido").collapse("show");
         $("#formulario").collapse("hide");
+    }
+
+    self.NuevaDireccion = function(){
+        if(!self.direccionACrear().direccion()){
+            alert("DIRECCION VACIA");
+        } else {
+            self.parDireccionFactory.create(ko.toJS(self.direccionACrear())).done(function(data){
+                if(!isNaN(data)){ //Si no viene un número significa que no pudo generar el id del registro
+                    self.direccionesArray.push(self.direccionACrear()); //Agrego la nueva direccion al desplegable
+                    self.direccionElegida(self.direccionACrear()); // Selecciono la nueva direccion creada en el desplegable
+                    self.direccionACrear(new parDireccion()); //Resetea los valores del modal
+                    $("#direccionModal").modal("hide"); // Esconde el modal
+                } else {
+                    alert("Error al crear dirección.");
+                }
+            });
+        }
     }
 
     self.ready();

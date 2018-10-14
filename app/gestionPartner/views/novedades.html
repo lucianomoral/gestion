@@ -67,9 +67,14 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="entrega">Entrega: </label>
-                <div class="col-sm-10">
-                <input class= "checkbox-inline" type="checkbox" data-bind="checked: esentrega">
-                <select class="form-control" id="entrega" data-bind="enable: esentrega, options: $root.direccionesArray, optionsText: 'direccion'"></select>
+                <div class="col-sm-1">
+                    <input type="checkbox" data-bind="checked: esentrega">
+                </div>
+                <div class="col-sm-6">
+                    <select class="form-control" id="entrega" data-bind="enable: esentrega, options: $root.direccionesArray, optionsText: 'direccion', value: $root.direccionElegida"></select>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary form-control" data-toggle="modal" data-target="#direccionModal">Nueva</button>
                 </div>
             </div>
             <div class="form-group">
@@ -93,4 +98,44 @@
             </div>
             </form>
     </div>
+    <div class="modal fade" id="direccionModal" role="dialog">
+        <div class="modal-dialog">            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Crear nueva direccion</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="direccionNueva">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="direccion">Direccion:</label>
+                                <div class="col-sm-10">
+                                <input type="text" class="form-control" id="direccion" data-bind="value: $root.direccionACrear().direccion">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="barrio">Barrio:</label>
+                                <div class="col-sm-10">
+                                <input type="text" class="form-control" id="barrio" data-bind="value: $root.direccionACrear().barrio">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label class="control-label col-sm-2" for="provincia">Provincia:</label>
+                                    <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="provincia" data-bind="value: $root.direccionACrear().provincia">
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bind="click: $root.NuevaDireccion">Crear</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 </div>

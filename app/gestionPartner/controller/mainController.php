@@ -23,7 +23,9 @@ if (!isset($_GET['classToCall'])){
 
     $_class = new $classToCreate();
 
-    echo $_class->{$methodToCall}();
+    //Si vienen parámetros, llama al método con parámetros sino solo al método
+    echo !isset($_GET['params']) ? $_class->{$methodToCall}() : $_class->{$methodToCall}($_GET['params']);
+    
 
 }
 
