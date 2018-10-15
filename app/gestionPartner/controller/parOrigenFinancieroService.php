@@ -16,6 +16,24 @@ class parOrigenFinancieroService extends dataHandler{
 
     }
 
+    public function create($params){
+
+        $origenFinanciero = R::dispense('parorigenfinanciero');
+
+        $origenFinanciero->fecha = $params['fecha'];
+        $origenFinanciero->idconcepto = $params['idconcepto'];
+        $origenFinanciero->valororiginal = $params['valororiginal'];
+        $origenFinanciero->valorpendiente = $params['valorpendiente'];
+        $origenFinanciero->idmoneda = $params['idmoneda'];
+        $origenFinanciero->idtitular = $params['idtitular'];
+        $origenFinanciero->observacion = $params['observacion'];
+
+        $id = R::store($origenFinanciero);
+
+        return $id;
+
+    }
+
 }
 
 /*$OFS = new parOrigenFinancieroService();

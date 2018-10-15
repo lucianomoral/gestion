@@ -5,7 +5,7 @@ function parOrigenFinancieroViewModel(){
     self.parConceptoFactory = new parConceptoFactory();
     self.direccionesArray = ko.observableArray();
     self.novedadesArray = ko.observableArray();
-    self.conceptosArray = ko.observableArray([{
+    self.conceptosArray = ko.observableArray([new parConcepto({
         id: -1,
         nombreconcepto:"",
         idtipoconcepto:0,
@@ -14,12 +14,35 @@ function parOrigenFinancieroViewModel(){
         cobradoeneldiapredeterminado:0,
         idclaseconcepto:0,
         nombreclaseconcepto:""
-    }]); // Se inicializa así porque sino da error al bindear porque espera la respuesta del server
+    })]); // Se inicializa así porque sino da error al bindear porque espera la respuesta del server
     self.direccionElegida = ko.observable(new parDireccion());
     self.direccionACrear = ko.observable(new parDireccion());
     self.conceptoElegido = ko.observable(new parConcepto());
     self.esentrega = ko.observable(false);
- 
+    self.novedadACrear = ko.observable(new Novedad());
+    
+    /*self.conceptoElegido().id.subscribe(function(){
+        if(self.conceptoElegido().id){
+            self.novedadACrear().idconcepto(self.conceptoElegido().id());
+        }
+    });
+
+    self.conceptoElegido().valorpredeterminado.subscribe(function(){
+        if(self.conceptoElegido().valorpredeterminado){
+            self.novedadACrear().valororiginal(self.conceptoElegido().valorpredeterminado());
+        }
+    });*/
+
+    ko.computed(function() {
+        return ko.toJSON(self.conceptoElegido());
+    }).subscribe(function() {
+        if(self.conceptoElegido()){
+            self.novedadACrear().idconcepto(self.conceptoElegido().id());
+            self.novedadACrear().valororiginal(self.conceptoElegido().valorpredeterminado());
+        }
+    });
+    
+
     self.ready = function(){
         self.parOrigenFinancieroFactory.getAll().done(function(data){
             data = JSON.parse(data);
@@ -28,15 +51,6 @@ function parOrigenFinancieroViewModel(){
             });
             $("#formulario").collapse("hide");
             $("#contenido").collapse("show");
-            $("#menu-toggle").click(function(e){
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-                if ($("#hideshowmenu").hasClass("glyphicon-arrow-left")){
-                    $("#hideshowmenu").removeClass("glyphicon-arrow-left").addClass("glyphicon-arrow-right");
-                } else {
-                    $("#hideshowmenu").removeClass("glyphicon-arrow-right").addClass("glyphicon-arrow-left");
-                }
-            });
         });
         self.parConceptoFactory.getAll().done(function(data){
             data = JSON.parse(data);
@@ -79,6 +93,35 @@ function parOrigenFinancieroViewModel(){
                 }
             });
         }
+    }
+
+    self.NuevaNovedad = function(){
+
+        var json = ko.toJS(self.novedadACrear());
+
+        console.log(json);
+        
+        if( !json.fecha || !json.idconcepto || !json.valororiginal || !json.idmoneda || !json.idtitular )
+        {
+            alert("Falta información necesaria para crear la novedad");
+
+        } else {
+
+            self.parOrigenFinancieroFactory.create(json).done(function(data){
+                if(!isNaN(data)){
+                    self.conceptoElegido(self.conceptosArray()[0]);
+                    self.novedadACrear(new Novedad());
+                    self.Cancelar();
+                } else {
+                    alert("Error al crear la novedad");
+                }
+            });
+
+        }
+
+        //console.log("Direccion: "+ self.direccionElegida().id() + " - " + self.direccionElegida().direccion());
+        //console.log(ko.toJS(self.novedadACrear()));
+        
     }
 
     self.ready();

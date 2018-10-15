@@ -16,9 +16,7 @@ $.renderView = function(view) {
 
 $(function() {
 
-    $(".renderView").click(function() {
-        $.renderView($(this).attr("data-view"));
-    });
+
 
 
 });
