@@ -6,13 +6,31 @@ class parConceptoService extends dataHandler{
 
     public function getAll($tableName = ''){
 
-        return parent::getAll('parconcepto');
+        $result = parent::getAll('parconcepto');
+
+        $this->close();
+
+        return $result;
 
     }
 
     public function getAllDetailed(){
 
-        return json_encode(R::getAll("SELECT * FROM parconceptodetalle"));
+        $result = json_encode(R::getAll("SELECT * FROM parconceptodetalle"));
+
+        $this->close();
+
+        return $result;
+
+    }
+
+    public static function shouldBePositiveValue($id){
+
+        $dataHandler = new dataHandler();
+
+        $concepto = R::load('parconcepto', $id);
+
+        return $concepto->idtipoconcepto == 1 ? true : false;
 
     }
 

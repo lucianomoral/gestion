@@ -6,13 +6,21 @@ class parOrigenFinancieroService extends dataHandler{
 
     public function getAll($tableName = ''){
 
-        return parent::getAll('parorigenfinanciero');
+        $result = parent::getAll('parorigenfinanciero');
+
+        $this->close();
+
+        return $result;
 
     }
 
     public function getAllDetailed(){
 
-        return json_encode(R::getAll("SELECT * FROM parorigenfinancierodetalle ORDER BY fecha desc LIMIT 0,10"));
+        $result = json_encode(R::getAll("SELECT * FROM parorigenfinancierodetalle ORDER BY fecha desc LIMIT 0,10"));
+
+        $this->close();
+
+        return $result;
 
     }
 
@@ -29,6 +37,8 @@ class parOrigenFinancieroService extends dataHandler{
         $origenFinanciero->observacion = $params['observacion'];
 
         $id = R::store($origenFinanciero);
+
+        $this->close();
 
         return $id;
 

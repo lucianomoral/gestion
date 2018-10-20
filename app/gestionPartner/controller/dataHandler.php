@@ -10,12 +10,15 @@ class dataHandler{
     //Constructor
     public function dataHandler(){
 
-        $this->datosConexion = new datosConexion();
+        if(!R::testConnection()){
 
-        R::setup('mysql:host=' . $this->datosConexion->getHost() . ';dbname=' . $this->datosConexion->getDb(), $this->datosConexion->getUser(), $this->datosConexion->getPass());
+            $this->datosConexion = new datosConexion();
 
-        R::freeze(TRUE); //Esto es para que no me altere el schema de la base de datos
+            R::setup('mysql:host=' . $this->datosConexion->getHost() . ';dbname=' . $this->datosConexion->getDb(), $this->datosConexion->getUser(), $this->datosConexion->getPass());
 
+            R::freeze(TRUE); //Esto es para que no me altere el schema de la base de datos
+
+        }
     }
 
     //Devuelve todos una tabla completa
@@ -24,6 +27,12 @@ class dataHandler{
         $data = R::findAll($tableName);
 
         return json_encode($data);
+
+    }
+
+    public function close(){
+
+        R::close();
 
     }
 

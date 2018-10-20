@@ -6,7 +6,11 @@ class parDireccionService extends dataHandler{
 
     public function getAll($tableName = ''){
 
-        return parent::getAll('pardireccion');
+        $result = parent::getAll('pardireccion');
+
+        $this->close();
+        
+        return $result;
 
     }
 
@@ -19,6 +23,8 @@ class parDireccionService extends dataHandler{
         $direccion->provincia = $params['provincia'];
 
         $id = R::store($direccion);
+
+        $this->close();
 
         return $id;
 

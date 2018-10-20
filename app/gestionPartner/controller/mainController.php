@@ -1,8 +1,9 @@
 <?php
 
-require_once("parOrigenFinancieroService.php");
 require_once("parConceptoService.php");
 require_once("parDireccionService.php");
+require_once("novedadService.php");
+
 
 if (!isset($_GET['classToCall'])){
 

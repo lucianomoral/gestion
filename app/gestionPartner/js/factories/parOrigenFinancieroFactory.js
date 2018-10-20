@@ -16,7 +16,7 @@ function parOrigenFinancieroFactory() {
         return $.ajax({
                 method: "GET",
                 data:{
-                    classToCall: 'parOrigenFinancieroService',
+                    classToCall: 'novedadService',
                     methodToCall: 'create',
                     params: json
                 },

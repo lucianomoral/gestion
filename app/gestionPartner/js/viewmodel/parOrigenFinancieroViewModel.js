@@ -20,18 +20,6 @@ function parOrigenFinancieroViewModel(){
     self.conceptoElegido = ko.observable(new parConcepto());
     self.esentrega = ko.observable(false);
     self.novedadACrear = ko.observable(new Novedad());
-    
-    /*self.conceptoElegido().id.subscribe(function(){
-        if(self.conceptoElegido().id){
-            self.novedadACrear().idconcepto(self.conceptoElegido().id());
-        }
-    });
-
-    self.conceptoElegido().valorpredeterminado.subscribe(function(){
-        if(self.conceptoElegido().valorpredeterminado){
-            self.novedadACrear().valororiginal(self.conceptoElegido().valorpredeterminado());
-        }
-    });*/
 
     ko.computed(function() {
         return ko.toJSON(self.conceptoElegido());
@@ -42,6 +30,17 @@ function parOrigenFinancieroViewModel(){
         }
     });
     
+    ko.computed(function() {
+        return ko.toJSON(self.direccionElegida());
+    }).subscribe(function(){
+        if(self.direccionElegida()){
+            self.novedadACrear().iddireccion(self.direccionElegida().id());
+        }
+    });
+
+    self.esentrega.subscribe(function(value){
+            self.novedadACrear().esentrega(value);
+    });
 
     self.ready = function(){
         self.parOrigenFinancieroFactory.getAll().done(function(data){
@@ -84,6 +83,7 @@ function parOrigenFinancieroViewModel(){
         } else {
             self.parDireccionFactory.create(ko.toJS(self.direccionACrear())).done(function(data){
                 if(!isNaN(data)){ //Si no viene un número significa que no pudo generar el id del registro
+                    self.direccionACrear().id(data); //Asigno id recibido
                     self.direccionesArray.push(self.direccionACrear()); //Agrego la nueva direccion al desplegable
                     self.direccionElegida(self.direccionACrear()); // Selecciono la nueva direccion creada en el desplegable
                     self.direccionACrear(new parDireccion()); //Resetea los valores del modal
@@ -98,10 +98,10 @@ function parOrigenFinancieroViewModel(){
     self.NuevaNovedad = function(){
 
         var json = ko.toJS(self.novedadACrear());
-
-        console.log(json);
         
-        if( !json.fecha || !json.idconcepto || !json.valororiginal || !json.idmoneda || !json.idtitular )
+        console.log(json);
+
+        if( !json.fecha || !json.idconcepto || !json.valororiginal || !json.idmoneda || !json.idtitular || (json.esentrega && !json.iddireccion) )
         {
             alert("Falta información necesaria para crear la novedad");
 
