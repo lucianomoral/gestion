@@ -24,6 +24,16 @@ class parOrigenFinancieroService extends dataHandler{
 
     }
 
+    public function getByIdDetailed($params){
+
+        $result = json_encode(R::getAll("SELECT * FROM parorigenfinancierodetalle WHERE id = :id ORDER BY fecha desc LIMIT 0,10", [":id" => $params['id']] ));
+
+        $this->close();
+
+        return $result;
+
+    }
+
     public function create($params){
 
         $origenFinanciero = R::dispense('parorigenfinanciero');
@@ -48,6 +58,6 @@ class parOrigenFinancieroService extends dataHandler{
 
 /*$OFS = new parOrigenFinancieroService();
 
-echo $OFS->getAllDetailed();*/
+echo $OFS->getByIdDetailed(30);*/
 
 ?>

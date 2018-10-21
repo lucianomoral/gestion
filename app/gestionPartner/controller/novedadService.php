@@ -55,17 +55,21 @@ class novedadService extends dataHandler{
                     
                         //R::commit();
 
-                        return $idEntrega;
+                        return json_encode(["status" => 1, "idorigenfinanciero" => $idOrigenFinanciero, "identrega" => $idEntrega]);
 
                     }
 
                 } else {
 
-                    return $idOrigenFinanciero;
+                    return json_encode(["status" => 1, "idorigenfinanciero" => $idOrigenFinanciero,"identrega" => 0]);
     
                 }
             
-            } 
+            } else {
+
+                return json_encode(["status" => 0, "idorigenfinanciero" => 0,"identrega" => 0]);
+
+            }
 
         /*} catch(Exception $e) {
 

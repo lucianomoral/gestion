@@ -98,8 +98,6 @@ function parOrigenFinancieroViewModel(){
     self.NuevaNovedad = function(){
 
         var json = ko.toJS(self.novedadACrear());
-        
-        console.log(json);
 
         if( !json.fecha || !json.idconcepto || !json.valororiginal || !json.idmoneda || !json.idtitular || (json.esentrega && !json.iddireccion) )
         {
@@ -108,10 +106,23 @@ function parOrigenFinancieroViewModel(){
         } else {
 
             self.parOrigenFinancieroFactory.create(json).done(function(data){
-                if(!isNaN(data)){
-                    self.conceptoElegido(self.conceptosArray()[0]);
-                    self.novedadACrear(new Novedad());
-                    self.Cancelar();
+                
+                data = JSON.parse(data);
+                
+                if(data.status == 1){
+
+                    self.parOrigenFinancieroFactory.getById(data.idorigenfinanciero).done(function(data){
+                        
+                        data = JSON.parse(data);
+
+                        self.novedadesArray.unshift(new OrigenFinanciero(data[0]));
+                        self.conceptoElegido(self.conceptosArray()[0]);
+                        self.esentrega(false);
+                        self.direccionElegida(self.direccionesArray()[0]);
+                        self.novedadACrear(new Novedad());
+                        self.Cancelar();
+
+                    })
                 } else {
                     alert("Error al crear la novedad");
                 }

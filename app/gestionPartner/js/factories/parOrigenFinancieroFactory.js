@@ -12,6 +12,20 @@ function parOrigenFinancieroFactory() {
                 });
     }
 
+    self.getById = function (id){
+        return $.ajax({
+                    method: "GET",
+                    data:{
+                        classToCall: 'parOrigenFinancieroService',
+                        methodToCall: 'getByIdDetailed',
+                        params:{
+                            id: id
+                        }
+                    },
+                    url: "../controller/mainController.php",
+                });
+    }
+
     self.create = function(json){
         return $.ajax({
                 method: "GET",
