@@ -22,7 +22,7 @@ $(function() {
         $.renderView($(this).attr("data-view"));
     });
 
-    $(document).on("click", "#menu-toggle", function(e) { 
+    $(document).on("click", "#menu-toggle", function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
         if ($("#hideshowmenu").hasClass("glyphicon-arrow-left")){

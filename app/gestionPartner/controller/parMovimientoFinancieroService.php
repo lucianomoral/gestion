@@ -14,6 +14,16 @@ class parMovimientoFinancieroService extends dataHandler{
 
     }
 
+    public function getPending(){
+
+        $result = json_encode(R::getAll("SELECT * FROM parorigenfinancierodetalle WHERE valorpendiente > 0 ORDER BY fecha"));
+
+        $this->close();
+
+        return $result;
+
+    }
+
     public function create($params){
 
         $movimientoFinanciero = R::dispense('parmovimientofinanciero');
@@ -23,6 +33,7 @@ class parMovimientoFinancieroService extends dataHandler{
         $movimientoFinanciero->idmoneda = $params['idmoneda'];
         $movimientoFinanciero->idcaja = $params['idcaja'];
         $movimientoFinanciero->idorigenfinanciero = $params['id'];
+        $movimientoFinanciero->observacion = $params['observacion'];
 
         $id = R::store($movimientoFinanciero);
 

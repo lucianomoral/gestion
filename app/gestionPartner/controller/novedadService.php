@@ -25,6 +25,9 @@ class novedadService extends dataHandler{
         $origenFinanciero = new parOrigenFinancieroService();
         $movimientoFinanciero = new parMovimientoFinancieroService();
 
+        $params["esentrega"] = $params["esentrega"] == "true" ? true : false;
+        $params["cobradoeneldia"] = $params["cobradoeneldia"] == "true" ? true : false;
+
         /*R::begin();
 
         try{*/
@@ -42,9 +45,6 @@ class novedadService extends dataHandler{
             $idOrigenFinanciero = $origenFinanciero->create($params);
 
             if ($idOrigenFinanciero){
-
-                $params["esentrega"] = $params["esentrega"] == "true" ? true : false;
-                $params["cobradoeneldia"] = $params["cobradoeneldia"] == "true" ? true : false;
 
                 $params["id"] = $idOrigenFinanciero;
 

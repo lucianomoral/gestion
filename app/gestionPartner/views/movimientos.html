@@ -1,1 +1,60 @@
-<div>LA CONCHA DE TU MADRE</div>
+
+<script src="../js/factories/parMovimientoFinancieroFactory.js"></script>
+<script src="../js/viewmodel/parMovimientosViewModel.js"></script>
+<div id="ko">
+    <botonera-loca params="Nuevo: $root.Nuevo" />
+    <div id="contenido" class="collapse">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Nombre día</th>
+                    <th>Concepto</th>
+                    <th>Valor</th>
+                    <th>Cobrar</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:{data:$root.novedadesArray,as:'n'}">
+                <tr data-bind="css: {'success': n.nombre_tipo() == 'INGRESO', 'danger': n.nombre_tipo() != 'INGRESO'}">
+                    <td data-bind="text:n.id"></td>
+                    <td data-bind="text:n.fecha"></td>
+                    <td data-bind="text:n.nombre_dia"></td>
+                    <td data-bind="text:n.nombre_concepto"></td>
+                    <td data-bind="text:n.valororiginal"></td>
+                    <td><button class="btn btn-primary" data-bind="click: $root.Cobrar">Cobrar</button></td>
+                </tr>
+            <tbody>
+        </table>
+    </div>
+    <br>
+    <div id="formulario" class="collapse">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Fecha:</label>
+                <div class="col-sm-10">
+                <input type="date" class="form-control" data-bind="value: $root.fechaAhorro">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Monto:</label>
+                <div class="col-sm-10">
+                <input type="number" class="form-control" data-bind="value: $root.montoAhorro">
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-sm-2">Observacion:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" data-bind="value: $root.observacionAhorro">
+                    </div>
+                </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-info" data-bind="click: $root.Ahorrar">Ahorrar</button>
+                <button class="btn btn-danger" data-bind="click: $root.Cancelar">Cancelar</button>
+                </div>
+            </div>
+            </form>
+    </div>
+    
+</div>

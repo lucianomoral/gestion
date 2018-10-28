@@ -102,9 +102,15 @@ function parOrigenFinancieroViewModel(){
 
     self.NuevaNovedad = function(){
 
+        if(!self.cobradoeneldia()){
+            self.novedadACrear().valorpendiente(self.novedadACrear().valororiginal());
+        } else {
+            self.novedadACrear().valorpendiente(0);
+        }
+        
         var json = ko.toJS(self.novedadACrear());
 
-        if( !json.fecha || !json.idconcepto || !json.valororiginal || !json.idmoneda || !json.idtitular || (json.esentrega && !json.iddireccion) )
+        if( !json.fecha || !json.idconcepto || !json.valororiginal || !json.idmoneda || !json.idtitular || (json.esentrega && json.iddireccion == 0) )
         {
             alert("Falta información necesaria para crear la novedad");
 
@@ -134,7 +140,7 @@ function parOrigenFinancieroViewModel(){
             });
 
         }
-        
+       
     }
 
     self.ready();

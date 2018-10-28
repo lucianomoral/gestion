@@ -54,6 +54,18 @@ class parOrigenFinancieroService extends dataHandler{
 
     }
 
+    public static function changePendingValue($id, $newMovementValue){
+
+        $dataHandler = new dataHandler();
+
+        $origenFinanciero = R::load('parorigenfinanciero', $id);
+
+        $origenFinanciero->valorpendiente = $origenFinanciero->valorpendiente + $newMovementValue;
+
+        R::store($origenFinanciero);
+
+    }
+
 }
 
 /*$OFS = new parOrigenFinancieroService();

@@ -3,6 +3,8 @@
 require_once("parConceptoService.php");
 require_once("parDireccionService.php");
 require_once("novedadService.php");
+require_once("movimientoFondosService.php");
+require_once("homeService.php");
 
 
 if (!isset($_GET['classToCall'])){

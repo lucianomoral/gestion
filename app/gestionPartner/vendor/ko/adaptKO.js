@@ -7,7 +7,7 @@ ko.components.register('botonera-loca', {
     template: 
     '<div class="btn-group btn-group-justified">' +
         '<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">' +
-            '<span id = "hideshowmenu" class="glyphicon glyphicon-arrow-right"></span>' +
+            '<span id = "hideshowmenu" class="glyphicon glyphicon-arrow-left"></span>' +
         '</a>' +
         '<a class="btn btn-success" data-bind="click: Nuevo">' +
             '<span class="glyphicon glyphicon-plus"></span> Nuevo' +
