@@ -19,6 +19,7 @@ function parOrigenFinancieroViewModel(){
     self.direccionACrear = ko.observable(new parDireccion());
     self.conceptoElegido = ko.observable(new parConcepto());
     self.esentrega = ko.observable(false);
+    self.cobradoeneldia = ko.observable(true);
     self.novedadACrear = ko.observable(new Novedad());
 
     ko.computed(function() {
@@ -39,7 +40,11 @@ function parOrigenFinancieroViewModel(){
     });
 
     self.esentrega.subscribe(function(value){
-            self.novedadACrear().esentrega(value);
+        self.novedadACrear().esentrega(value);
+    });
+
+    self.cobradoeneldia.subscribe(function(value){
+        self.novedadACrear().cobradoeneldia(value);
     });
 
     self.ready = function(){
@@ -129,9 +134,6 @@ function parOrigenFinancieroViewModel(){
             });
 
         }
-
-        //console.log("Direccion: "+ self.direccionElegida().id() + " - " + self.direccionElegida().direccion());
-        //console.log(ko.toJS(self.novedadACrear()));
         
     }
 

@@ -3,6 +3,7 @@
 require_once("dataHandler.php");
 require_once("parOrigenFinancieroService.php");
 require_once("parMovimientoFinancieroService.php");
+require_once("parCajaService.php");
 require_once("parEntregaService.php");
 
 class novedadService extends dataHandler{
@@ -21,6 +22,9 @@ class novedadService extends dataHandler{
 
     public function create($params){
 
+        $origenFinanciero = new parOrigenFinancieroService();
+        $movimientoFinanciero = new parMovimientoFinancieroService();
+
         /*R::begin();
 
         try{*/
@@ -35,19 +39,32 @@ class novedadService extends dataHandler{
 
             }
 
-            $origenFinanciero = new parOrigenFinancieroService();
-
             $idOrigenFinanciero = $origenFinanciero->create($params);
 
             if ($idOrigenFinanciero){
 
                 $params["esentrega"] = $params["esentrega"] == "true" ? true : false;
+                $params["cobradoeneldia"] = $params["cobradoeneldia"] == "true" ? true : false;
+
+                $params["id"] = $idOrigenFinanciero;
+
+                if($params["cobradoeneldia"]){
+
+                    $params["idcaja"] = 1; //EFECTIVO
+
+                } else {
+
+                    $params["idcaja"] = 3; //PENDIENTE
+
+                }
+
+                $idMovimientoFinanciero = $movimientoFinanciero->create($params);
+
+                parCajaService::changeBalance($params['idcaja'], $params['valororiginal']);
 
                 if($params["esentrega"]){
 
                     $entrega = new parEntregaService();
-
-                    $params["id"] = $idOrigenFinanciero;
 
                     $idEntrega = $entrega->create($params);
 
@@ -55,19 +72,19 @@ class novedadService extends dataHandler{
                     
                         //R::commit();
 
-                        return json_encode(["status" => 1, "idorigenfinanciero" => $idOrigenFinanciero, "identrega" => $idEntrega]);
+                        return json_encode(["status" => 1, "idorigenfinanciero" => $idOrigenFinanciero, "identrega" => $idEntrega, "idmovimientofinanciero" => $idMovimientoFinanciero]);
 
                     }
 
                 } else {
 
-                    return json_encode(["status" => 1, "idorigenfinanciero" => $idOrigenFinanciero,"identrega" => 0]);
+                    return json_encode(["status" => 1, "idorigenfinanciero" => $idOrigenFinanciero,"identrega" => 0,  "idmovimientofinanciero" => $idMovimientoFinanciero]);
     
                 }
             
             } else {
 
-                return json_encode(["status" => 0, "idorigenfinanciero" => 0,"identrega" => 0]);
+                return json_encode(["status" => 0, "idorigenfinanciero" => 0,"identrega" => 0,  "idmovimientofinanciero" => $idMovimientoFinanciero]);
 
             }
 

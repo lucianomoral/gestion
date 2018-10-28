@@ -9,7 +9,9 @@ function Novedad(pObj) {
         idtitular:1,
         observacion:"",
         iddireccion:0,
-        esentrega: false
+        esentrega: false,
+        idcaja:0,
+        cobradoeneldia: true
     };
     
     $.extend(iObj, pObj);
@@ -25,4 +27,6 @@ function Novedad(pObj) {
     self.observacion = ko.observable(iObj.observacion);
     self.iddireccion = ko.observable(iObj.iddireccion);
     self.esentrega = ko.observable(iObj.esentrega);
+    self.idcaja = ko.observable(iObj.idcaja);
+    self.cobradoeneldia = ko.observable(iObj.cobradoeneldia);
 }
