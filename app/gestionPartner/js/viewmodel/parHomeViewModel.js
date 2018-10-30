@@ -8,7 +8,7 @@ function parHomeViewModel() {
     mesActual = mesActual.toLocaleDateString('es-ES', {month: 'long'});
     mesActual = mesActual.charAt(0).toUpperCase() + mesActual.slice(1);
 
-    self.meses = ko.observableArray(["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]);
+    self.meses = ko.observableArray(["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]);
     self.mesElegido = ko.observable(mesActual);
     self.tiposConcepto = ko.observableArray(["INGRESO", "GASTO", "EGRESO"]);
     self.tipoConceptoElegido = ko.observable("INGRESO");
