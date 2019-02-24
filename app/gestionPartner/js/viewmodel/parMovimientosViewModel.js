@@ -6,8 +6,22 @@ function parMovimientoFinancieroViewModel(){
     self.fechaAhorro = ko.observable();
     self.montoAhorro = ko.observable();
     self.observacionAhorro = ko.observable("");
+    self.cajasArray = ko.observableArray();
+    self.cajaDesde = ko.observable();
+    self.cajaHacia = ko.observable();
+    self.cajaDesdeElegida = ko.observable();
+    self.cajaHaciaElegida = ko.observable();
+    self.saveEnabled = ko.observable(0);
 
     self.ready = function(){
+        self.parMovimientoFinancieroFactory.getCajas().done(function(data){
+            data = JSON.parse(data);
+            $.each(Object.keys(data), function(i, key){
+                self.cajasArray.push(data[key]);
+            });
+
+        });
+
         self.parMovimientoFinancieroFactory.getPending().done(function(data){
             data = JSON.parse(data);
             $.each(Object.keys(data), function(i, key){
@@ -30,6 +44,7 @@ function parMovimientoFinancieroViewModel(){
 
     self.Cobrar = function(item){
         
+        self.saveEnabled(item.id()); //Se cambia este valor para que se bloquee el boton y no se mande dos veces
         self.movimientoACrear().id(item.id());
         self.movimientoACrear().fecha(item.fecha());
         self.movimientoACrear().valororiginal(item.valororiginal());
@@ -39,6 +54,9 @@ function parMovimientoFinancieroViewModel(){
         self.movimientoACrear().idcaja(1);
 
         json = ko.toJS(self.movimientoACrear);
+
+        json.cajaDesde = 3;
+        json.cajaHacia = 1;
 
         self.parMovimientoFinancieroFactory.collect(json).done(function(data){
             data = JSON.parse(data);
@@ -52,10 +70,14 @@ function parMovimientoFinancieroViewModel(){
     };
 
     self.Ahorrar = function(){
-
+        
         if(!self.fechaAhorro() || !self.montoAhorro()) {
 
             alert("Faltan completar datos");
+
+        } else if (self.cajaDesdeElegida().id == self.cajaHaciaElegida().id){
+
+            alert("Las cajas no pueden ser iguales.");
 
         } else {
         
@@ -68,6 +90,9 @@ function parMovimientoFinancieroViewModel(){
             self.movimientoACrear().idcaja(1);
 
             json = ko.toJS(self.movimientoACrear);
+
+            json.cajaDesde = self.cajaDesdeElegida().id;
+            json.cajaHacia = self.cajaHaciaElegida().id;
 
             self.parMovimientoFinancieroFactory.save(json).done(function(data){
                 data = JSON.parse(data);
@@ -82,8 +107,6 @@ function parMovimientoFinancieroViewModel(){
             });
 
         }
-
-        
         
     };
 

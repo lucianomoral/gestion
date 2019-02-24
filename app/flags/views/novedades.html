@@ -1,0 +1,139 @@
+<!--script src="../js/viewmodel/novedadesViewModel.js"></script-->
+<script src="../js/factories/parOrigenFinancieroFactory.js"></script>
+<script src="../js/factories/parDireccionFactory.js"></script>
+<script src="../js/factories/parConceptoFactory.js"></script>
+<script src="../js/viewmodel/parOrigenFinancieroViewModel.js"></script>
+<div id="ko">
+    <botonera-loca params="Nuevo: $root.Nuevo" />
+    <div id="contenido" class="collapse">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Nombre día</th>
+                    <th>Concepto</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Moneda</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:{data:$root.novedadesArray,as:'n'}">
+                <tr data-bind="css: {'success': n.nombre_tipo() == 'INGRESO', 'danger': n.nombre_tipo() != 'INGRESO'}">
+                    <td data-bind="text:n.fecha"></td>
+                    <td data-bind="text:n.nombre_dia"></td>
+                    <td data-bind="text:n.nombre_concepto"></td>
+                    <td data-bind="text:n.nombre_tipo"></td>
+                    <td data-bind="text:n.valororiginal"></td>
+                    <td data-bind="text:n.nombre_moneda"></td>
+                </tr>
+            <tbody>
+        </table>
+    </div>
+    <br>
+    <div id="formulario" class="collapse">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Fecha:</label>
+                <div class="col-sm-10">
+                <input type="date" class="form-control" data-bind="textInput: $root.novedadACrear().fecha">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Concepto:</label>
+                <div class="col-sm-10">
+                <select class="form-control" data-bind="options:$root.conceptosArray, optionsText:'nombreconcepto', value: $root.conceptoElegido">
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Tipo:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" disabled data-bind="textInput: $root.conceptoElegido().nombretipoconcepto">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Monto:</label>
+                <div class="col-sm-10">
+                <input type="number" class="form-control" data-bind="textInput: $root.conceptoElegido().valorpredeterminado">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Moneda: </label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" disabled value="ARS">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Entrega: </label>
+                <div class="col-sm-1">
+                    <input type="checkbox" data-bind="checked: esentrega">
+                </div>
+                <div class="col-sm-6">
+                    <select class="form-control" data-bind="enable: esentrega, options: $root.direccionesArray, optionsText: 'direccion', value: $root.direccionElegida"></select>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary form-control" data-toggle="modal" data-target="#direccionModal">Nueva</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Observaciones: </label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" data-bind="textInput: $root.novedadACrear().observacion">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox" data-bind="checked: cobradoeneldia"> Cobrado en el día</label>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-info" data-bind="click: $root.NuevaNovedad">Guardar</button>
+                <button class="btn btn-danger" data-bind="click: $root.Cancelar">Cancelar</button>
+                </div>
+            </div>
+            </form>
+    </div>
+    <div class="modal fade" id="direccionModal" role="dialog">
+        <div class="modal-dialog">            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Crear nueva direccion</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="direccionNueva">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Direccion:</label>
+                                <div class="col-sm-10">
+                                <input type="text" class="form-control" data-bind="value: $root.direccionACrear().direccion">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Barrio:</label>
+                                <div class="col-sm-10">
+                                <input type="text" class="form-control" data-bind="value: $root.direccionACrear().barrio">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label class="control-label col-sm-2">Provincia:</label>
+                                    <div class="col-sm-10">
+                                    <input type="text" class="form-control" data-bind="value: $root.direccionACrear().provincia">
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bind="click: $root.NuevaDireccion">Crear</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>

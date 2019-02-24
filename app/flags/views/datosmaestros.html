@@ -1,0 +1,47 @@
+<script src="../js/factories/datosMaestrosFactory.js"></script>
+<script src="../js/viewmodel/datosMaestrosViewModel.js"></script>
+
+<div id="ko">
+    <div id="contenido">
+        <botonera-loca params=""/>
+        <br>
+        <div class="form-group form-inline">
+            <select class="form-control" data-bind="options: $root.tablesArray, value: $root.tableElegida"></select>
+            <button class="btn" data-bind="click: $root.ver">Ver</button>
+        </div>
+        <br>
+        <div id="tableContent">
+            <table class="table table-hover">
+                <thead>
+                    <tr data-bind="foreach: $root.tableHeader">
+                        <th data-bind="text: $data"></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: {data: $root.tableBody, as:'row'}">
+                    <!--tr data-bind="text: $parent.tableBody()[$index()]()"></tr-->
+                    <tr data-bind="foreach: {data: $parent.tableBody()[$index()], as:'valor'}">
+                        
+                        <td>
+                            
+                            <p data-bind="text: $parent.$parent.tableBody()[$parentContext.$index()][$index()]"></p> <!--, visible: $root.editMode() != $parentContext.$index()"></p-->
+                            <input class="form-control" data-bind="value: $parent.$parent.tableBody()[$parentContext.$index()][$index()]"> <!--, visible: $root.editMode() == $parentContext.$index()"-->
+
+                        </td>
+                        <!--ko if: $index() + 1 == row.length-->
+                        
+                            <td>
+                                <button class="btn btn-info" data-bind="click: function(){$root.editar($parentContext.$index())}, visible: $root.editMode() != $parentContext.$index()">Editar</button>
+                                <button class="btn btn-success" data-bind="click: function(){$root.guardar($parentContext.$index())}, visible: $root.editMode() == $parentContext.$index()">Guardar</button>
+                            </td>
+                            <td>
+                                <button class="btn" data-bind="click: function(){$root.borrar($parentContext.$index());}">Borrar</button>
+                            </td>
+
+                        <!--/ko-->
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

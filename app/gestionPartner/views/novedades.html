@@ -72,7 +72,7 @@
                     <select class="form-control" data-bind="enable: esentrega, options: $root.direccionesArray, optionsText: 'direccion', value: $root.direccionElegida"></select>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-primary form-control" data-toggle="modal" data-target="#direccionModal">Nueva</button>
+                    <button class="btn btn-primary form-control" data-toggle="modal" data-target="#direccionModal" data-bind="click: function(e){e.preventDefault();}">Nueva</button>
                 </div>
             </div>
             <div class="form-group">

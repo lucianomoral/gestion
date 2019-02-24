@@ -30,6 +30,16 @@ class dataHandler{
 
     }
 
+    public function getAllTables(){
+
+        $data = R::getAll("SELECT TABLE_NAME from information_schema.tables WHERE table_schema = 'kiosco' and table_type = 'BASE TABLE' and TABLE_NAME like 'par%'");
+
+        $this->close();
+
+        return json_encode($data);
+
+    }
+
     public function close(){
 
         R::close();

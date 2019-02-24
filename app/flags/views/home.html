@@ -1,0 +1,60 @@
+<script src="../js/factories/homeFactory.js"></script>
+<script src="../js/viewmodel/parHomeViewModel.js"></script>
+<div id="ko">
+    <div id="contenido">
+        <botonera-loca params=""/>
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Saldo</th>
+                        <th>Moneda</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:{data:$root.cajasArray,as:'n'}">
+                    <tr data-bind="">
+                        <td data-bind="text:n.nombre"></td>
+                        <td data-bind="text:n.saldo"></td>
+                        <td>ARS</td>
+                    </tr>
+                <tbody>
+            </table>
+
+            <div class="form-group form-inline">
+                <label>Mes: </label>
+                <select class="form-control" data-bind="options: $root.meses, value: $root.mesElegido"></select>
+                <label>Tipo: </label>
+                <select class="form-control" data-bind="options: $root.tiposConcepto, value: $root.tipoConceptoElegido"></select>
+                <button class="btn" data-bind="click: $root.calculateTotal">Calcular</button>
+            </div>
+
+            <table class="table table-hover" id="novedadesPorMes">
+                    <thead>
+                        <tr>
+                            <th>Mes</th>
+                            <th>Concepto</th>
+                            <th>Cantidad</th>
+                            <th>Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach:{data:$root.novedadesPorMesArray,as:'n'}">
+                        <tr data-bind="css: {'success': n.nombre_tipo == 'INGRESO', 'danger': n.nombre_tipo != 'INGRESO'}, visible: n.mes == $root.mesElegido() && n.nombre_tipo == $root.tipoConceptoElegido()">
+                        <!--tr data-bind=""-->
+                            <td data-bind="text:n.mes"></td>
+                            <td data-bind="text:n.nombre_concepto"></td>
+                            <td data-bind="text:n.cantidad"></td>
+                            <td data-bind="text:n.monto"></td>
+                        </tr>
+                    <tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Total:</th>
+                            <th data-bind="text: $root.total, afterRender: $root.calculateTotal"></th> 
+                        </tr>
+                    </tfoot>
+                    
+                </table>
+
+    </div>

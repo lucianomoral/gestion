@@ -16,7 +16,7 @@ class parOrigenFinancieroService extends dataHandler{
 
     public function getAllDetailed(){
 
-        $result = json_encode(R::getAll("SELECT * FROM parorigenfinancierodetalle ORDER BY fecha desc LIMIT 0,10"));
+        $result = json_encode(R::getAll("SELECT * FROM parorigenfinancierodetalle ORDER BY fecha desc LIMIT 0,20"));
 
         $this->close();
 
@@ -26,7 +26,7 @@ class parOrigenFinancieroService extends dataHandler{
 
     public function getByIdDetailed($params){
 
-        $result = json_encode(R::getAll("SELECT * FROM parorigenfinancierodetalle WHERE id = :id ORDER BY fecha desc LIMIT 0,10", [":id" => $params['id']] ));
+        $result = json_encode(R::getAll("SELECT * FROM parorigenfinancierodetalle WHERE id = :id ORDER BY fecha desc", [":id" => $params['id']] ));
 
         $this->close();
 
@@ -60,7 +60,7 @@ class parOrigenFinancieroService extends dataHandler{
 
         $origenFinanciero = R::load('parorigenfinanciero', $id);
 
-        $origenFinanciero->valorpendiente = $origenFinanciero->valorpendiente + $newMovementValue;
+        $origenFinanciero->valorpendiente = $origenFinanciero->valorpendiente - $newMovementValue;
 
         R::store($origenFinanciero);
 

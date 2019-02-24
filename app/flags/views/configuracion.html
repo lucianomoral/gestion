@@ -1,0 +1,155 @@
+<script src="../js/factories/FamiliaArticuloFactory"></script>
+<script src="../js/viewmodel/configuracionViewModel"></script>
+
+<div id="ko">
+
+	<div id="contenido">
+
+		<botonera-loca params="Nuevo: $root.Nuevo"/>
+
+		<br>
+
+		<div class="form-group">
+
+			<select class="form-control" data-bind="options: $root.maestros, value: $root.maestroElegido">
+
+			</select>
+
+			<button class="btn btn-primary" data-bind="click: function(){console.log($root.articulos());}">Prueba</button>
+
+		<br>
+
+			<!--ko if: $root.maestroElegido() == "Articulos"-->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Familia</th>
+						<th>Eliminar</th>
+						<th>Guardar</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: {data: $root.articulos, as: 'articulo'}">
+					<tr>
+						<td data-bind="text: id"></td>
+						<td> 
+							<input type="text" class="form-control" data-bind="visible: $index() == $root.lineaEditable(), value: articulo.nombre">
+							<p data-bind="visible: $index() != $root.lineaEditable(), text: articulo.nombre"></p>
+						</td>
+						<td>
+							<!--div data-bind="visible: $index() == $root.lineaEditable()">
+								<select class="form-control" data-bind="foreach: {data: $root.familiasArticulo, as:'familiaArticulo'}, value: articulo.idFamiliaArticulo">
+									<option data-bind="text: familiaArticulo.nombre"></option>
+								</select>
+							</div-->
+							<div data-bind="visible: $index() == $root.lineaEditable()">
+								<select class="form-control" data-bind="options: $root.familiasArticulo, optionsText: 'nombre', value: articulo.idFamiliaArticulo, optionsValue: 'id'">
+								</select>
+							</div>
+							<p data-bind="visible: $index() != $root.lineaEditable(), text: articulo.idFamiliaArticulo"></p>
+						</td>
+						<td>
+							<button class="btn btn-danger" data-bind="click: $root.EliminarArticulo">Eliminar</button>
+						</td>
+						<td>
+							<button class="btn btn-primary" data-bind="visible: $index() == $root.lineaEditable(), click: $root.GuardarArticulo">Guardar</button>
+							<button class="btn btn-primary" data-bind="visible: $index() != $root.lineaEditable(), click: function(){$root.EditarArticulo($index());}">Editar</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--/ko-->
+
+			<!--ko if: $root.maestroElegido() == "Sucursales"-->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Eliminar</th>
+						<th>Guardar</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: $root.sucursales">
+					<tr>
+						<td data-bind="text: id"></td>
+						<td> 
+							<input type="text" class="form-control" data-bind="visible: $index() == $root.lineaEditable(), value: nombre">
+							<p data-bind="visible: $index() != $root.lineaEditable(), text: nombre"></p>
+						</td>
+						<td>
+							<button class="btn btn-danger" data-bind="click: $root.EliminarSucursal">Eliminar</button>
+						</td>
+						<td>
+							<button class="btn btn-primary" data-bind="visible: $index() == $root.lineaEditable(), click: function(){$root.CambiarLineaEditable(-1)}">Guardar</button>
+							<button class="btn btn-primary" data-bind="visible: $index() != $root.lineaEditable(), click: function(){$root.CambiarLineaEditable($index())}">Editar</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--/ko-->
+
+			<!--ko if: $root.maestroElegido() == "Proveedores"-->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Eliminar</th>
+						<th>Guardar</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: $root.proveedores">
+					<tr>
+						<td data-bind="text: id"></td>
+						<td> 
+							<input type="text" class="form-control" data-bind="visible: $index() == $root.lineaEditable(), value: nombre">
+							<p data-bind="visible: $index() != $root.lineaEditable(), text: nombre"></p>
+						</td>
+						<td>
+							<button class="btn btn-danger" data-bind="click: $root.EliminarProveedor">Eliminar</button>
+						</td>
+						<td>
+							<button class="btn btn-primary" data-bind="visible: $index() == $root.lineaEditable(), click: function(){$root.CambiarLineaEditable(-1)}">Guardar</button>
+							<button class="btn btn-primary" data-bind="visible: $index() != $root.lineaEditable(), click: function(){$root.CambiarLineaEditable($index())}">Editar</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--/ko-->
+
+			<!--ko if: $root.maestroElegido() == "Familias de articulos"-->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Eliminar</th>
+						<th>Guardar</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: $root.familiasArticulo">
+					<tr>
+						<td data-bind="text: id"></td>
+						<td> 
+							<input type="text" class="form-control" data-bind="visible: $index() == $root.lineaEditable(), value: nombre">
+							<p data-bind="visible: $index() != $root.lineaEditable(), text: nombre"></p>
+						</td>
+						<td>
+							<button class="btn btn-danger" data-bind="click: $root.EliminarFamiliaArticulo">Eliminar</button>
+						</td>
+						<td>
+							<button class="btn btn-primary" data-bind="visible: $index() == $root.lineaEditable(), click: function(){$root.CambiarLineaEditable(-1)}">Guardar</button>
+							<button class="btn btn-primary" data-bind="visible: $index() != $root.lineaEditable(), click: function(){$root.CambiarLineaEditable($index())}">Editar</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--/ko-->
+
+		</div>
+
+	</div>
+
+</div>

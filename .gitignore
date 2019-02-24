@@ -5,3 +5,5 @@ pruebaKO.php
 pruebaRedBean.php
 app/gestionPartner/public/cache/
 app/gestionPartner/testfiles/
+app/flags/vendor/datosConexion.php
+app/controlCoca/config/datosConexion.php
