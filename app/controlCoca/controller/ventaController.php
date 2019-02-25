@@ -9,6 +9,57 @@ require_once('tipoOperacionEnum.php');
 class ventaController extends dataHandler
 {
 
+  public function getAllPedidos()
+  {
+    $data = R::getAll("SELECT * FROM pedido ORDER BY fechaentrega");
+
+    $this->close();
+
+    return json_encode($data);
+
+  }
+
+  public function getAllPedidosDetalle()
+  {
+    $data = R::getAll("SELECT * FROM pedidodetalle ORDER BY idmovimientoreferencia");
+
+    $this->close();
+
+    return json_encode($data);
+
+  }
+
+  public function deliverPedido($params)
+  {
+    try{
+
+      $i = 0;
+      $movimientoStock = new movimientoStockService();
+
+      $lineasPedido = R::find('movimientostock', 'idmovimientoreferencia = :idmovimientoreferencia AND idtipooperacion = :idtipooperacion', [':idmovimientoreferencia' => $params['id'], ':idtipooperacion' => tipoOperacionEnum::venta()]);
+
+      foreach ($lineasPedido as $lineaPedido)
+      {
+        $movimientoStock->impactStock($lineaPedido['id']);
+        $i = $i + 1;
+      }
+
+      if  (count($lineasPedido) == $i)
+      {
+        $venta = R::load('venta', $params['id']);
+        $venta->entregado = 1;
+        R::store($venta);
+      }
+
+      return json_encode(["response" => 200, "status" => "OK", "msg" => "Pedido entregado correctamente."]);
+
+    } catch (Exception $e){
+
+      return json_encode(["response" => 400, "status" => "ER", "msg" => "Error al entregar el pedido."]);
+
+    }
+  }
+
   public function createOrder ($params)
   {
     try{
@@ -41,11 +92,11 @@ class ventaController extends dataHandler
 
         $this->close();
 
-        echo json_encode(["response" => 200, "status" => "OK", "msg" => "Pedido registrado correctamente."]);
+        return json_encode(["response" => 200, "status" => "OK", "msg" => "Pedido registrado correctamente."]);
 
       } catch (Exception $e) {
 
-        echo json_encode(["response" => 400, "status" => "ER", "msg" => "Error al registrar pedido."]);
+        return json_encode(["response" => 400, "status" => "ER", "msg" => "Error al registrar pedido."]);
 
       }
 

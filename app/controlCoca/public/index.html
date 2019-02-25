@@ -22,11 +22,14 @@
     <script src="../js/model/proveedor.js"></script>
     <script src="../js/model/venta.js"></script>
     <script src="../js/model/productoCanasta.js"></script>
+    <script src="../js/model/pedido.js"></script>
+    <script src="../js/model/pedidoDetalle.js"></script>
 
     <!--Factories KO-->
     <script src="../js/factories/productoFactory.js"></script>
     <script src="../js/factories/productoCanastaFactory.js"></script>
     <script src="../js/factories/clienteFactory.js"></script>
+    <script src="../js/factories/pedidoFactory.js"></script>
 
     <!--Viewmodels KO-->
     <script src="../js/viewmodel/productoViewModel.js"></script>
@@ -49,18 +52,85 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li><a data-toggle="modal" data-target="#modal" data-bind="click: function(){$root.tipoOperacion('COMPRA');}">Comprar</a></li>
-              <li><a > Entregar pedidos</a></li>
-              <li><a data-toggle="modal" data-target="#modal" data-bind="click: function(){$root.tipoOperacion('VENTA');}">Crear pedidos</a></li>
-              <li><a >Clientes</a></li>
+              <li><a data-toggle="modal" data-target="#canasta" data-bind="click: function(){$root.tipoOperacion('COMPRA');}">Comprar</a></li>
+              <li><a data-bind="click: function(){$root.sectionVisible('PEDIDOS');}"> Entregar pedidos</a></li>
+              <li><a data-toggle="modal" data-target="#canasta" data-bind="click: function(){$root.tipoOperacion('VENTA');}">Crear pedidos</a></li>
+              <li><a data-bind="click: function(){$root.sectionVisible('CLIENTES');}">Clientes</a></li>
               <li><a >Productos</a></li>
             </ul>
           </div>
         </div>
       </nav>
 
-      <!-- MODAL -->
-      <div id="modal" class="modal fade" role="dialog">
+      <div id="pedidos" data-bind="if: $root.sectionVisible() == 'PEDIDOS'">
+        <div class="">
+          <select class="form-control" data-bind="options: $root.pedidosArray, optionsText: function(item){return 'Pedido ' + item.id() + ' - ' + item.nombre() + ' - ' + item.direccion()}, value: pedidoElegido, event: {focus: $root.savePreviousSelectedPedido}">
+          </select>
+        </div>
+        <!--label class="label-control">Fecha entrega: </label>
+        <p data-bind="text: $root.pedidoElegido().fechaentrega()"></p-->
+        <div class="">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Id.</th>
+                <th>Nombre</th>
+                <th data-bind="visible: !$root.editMode()">Cantidad</th>
+                <th data-bind="visible: $root.editMode">Cantidad</th>
+                <th>Borrar</th>
+              </tr>
+            </thead>
+            <tbody data-bind="foreach: {data: $root.pedidosDetalleArray, as: 'lineaPedido'}">
+              <tr data-bind="if: lineaPedido.idmovimientoreferencia() == $root.pedidoElegido().id()">
+                <td data-bind="text: lineaPedido.idmovimientoreferencia"></td>
+                <td data-bind="text: lineaPedido.nombreproducto"></td>
+                <td data-bind="text: lineaPedido.cantidad, visible: !$root.editMode()"></td>
+                <td data-bind="visible: $root.editMode"><input type="number" class="form-control" data-bind="textInput: lineaPedido.cantidad"></td>
+                <td><button type="button" class="btn btn-danger">Borrar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="">
+          <button type="button" class="btn btn-primary pull-right" data-bind="click: function(){$root.savePedido($root.pedidoElegido().id());}, visible: $root.editMode()">Guardar</button>
+          <button type="button" class="btn btn-default pull-right" data-bind="click: $root.activateEditMode, visible: !$root.editMode()">Editar</button>
+          <button type="button" class="btn btn-success pull-right" data-bind="click: $root.deliverPedido">Entregar</button>
+        </div>
+
+      </div>
+
+      <div id="clientes" data-bind="if: $root.sectionVisible() == 'CLIENTES'">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Id.</th>
+              <th>Nombre</th>
+              <th>Direccion</th>
+              <th>Borrar</th>
+              <th>Editar</th>
+              <th>Guardar</th>
+            </tr>
+          </thead>
+          <tbody data-bind="foreach: {data:$root.clientesArray, as: 'cliente'}">
+            <tr>
+              <td data-bind="text: cliente.id"></td>
+              <td data-bind="text: cliente.nombre"></td>
+              <td data-bind="text: cliente.direccion"></td>
+              <td><button type="button" class="btn btn-danger">Borrar</button></td>
+              <td><button type="button" class="btn btn-default">Editar</button></td>
+              <td><button type="button" class="btn btn-primary">Guardar</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#nuevoCliente">Nuevo cliente</button>
+
+      </div>
+
+
+      <!-- MODAL CANASTA PRODUCTOS-->
+      <div id="canasta" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <!-- CONTENIDO -->
           <div class="modal-content">
@@ -111,10 +181,48 @@
             </div>
             <!-- /CUERPO -->
 
-
             <!-- PIE -->
             <div class="modal-footer">
               <button type="button" class="btn btn-success" data-dismiss="modal" data-bind="click: function(){$root.confirmEnabled(false); $root.confirmOperation($root.tipoOperacion());}, enable: $root.confirmEnabled">Confirmar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+            <!-- /PIE -->
+
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL CLIENTE NUEVO-->
+      <div id="nuevoCliente" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- CONTENIDO -->
+          <div class="modal-content">
+
+            <!-- CABECERA -->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Ingresar datos</h4>
+            </div>
+            <!-- /CABECERA -->
+
+            <!-- CUERPO -->
+            <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="form-group">
+                    <label class="label-control">Nombre: </label>
+                    <input type="text" class="form-control" data-bind="textInput: $root.clienteACrear().nombre">
+                  </div>
+                  <div class="form-group">
+                    <label class="label-control">Direccion: </label>
+                    <input type="text" class="form-control" data-bind="textInput: $root.clienteACrear().direccion">
+                  </div>
+                </div>
+            </div>
+            <!-- /CUERPO -->
+
+            <!-- PIE -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal" data-bind="click: $root.createCliente">Crear</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
             <!-- /PIE -->

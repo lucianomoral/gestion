@@ -12,4 +12,14 @@ function clienteFactory()
     });
   }
 
+  self.create = function(data)
+  {
+    return $.ajax({
+      method: "POST",
+      data: {function: 'createCustomer',
+            data: data},
+      url: '../controller/mainController.php'
+    });
+  }
+
 }

@@ -14,6 +14,21 @@ class clienteService extends dataHandler
     return $data;
   }
 
+  public function create($params)
+  {
+    $cliente = R::dispense('cliente');
+
+    $cliente->nombre = $params['nombre'];
+    $cliente->direccion = $params['direccion'];
+
+    $id = R::store($cliente);
+
+    $this->close();
+
+    return $id;
+
+  }
+
 }
 
 ?>

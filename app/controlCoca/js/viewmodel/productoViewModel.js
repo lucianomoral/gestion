@@ -6,22 +6,32 @@ function productoViewModel()
   self.productoFactory = new productoFactory();
   self.productoCanastaFactory = new productoCanastaFactory();
   self.clienteFactory = new clienteFactory();
+  self.pedidoFactory = new pedidoFactory();
 
   //ObservableArrays
   self.productosArray = ko.observableArray();
   self.clientesArray = ko.observableArray();
+  self.pedidosArray = ko.observableArray();
+  self.pedidosDetalleArray = ko.observableArray();
 
   //Observables
+  self.clienteACrear = ko.observable(new cliente());
   self.clienteElegido = ko.observable();
   self.tipoOperacion = ko.observable();
   self.fechaEntrega = ko.observable();
   self.confirmEnabled = ko.observable(true);
+  self.pedidoElegido = ko.observable();
+  self.editMode = ko.observable(false);
+  self.sectionVisible = ko.observable();
+  self.previousSelectedIdPedido = ko.observable();
 
   self.ready = function()
   {
       self.cargarProductos();
       self.cargarClientes();
       self.cargarFechaEntregaDefault();
+      self.cargarPedidos();
+      self.cargarDetallePedidos();
   }
 
   self.cargarFechaEntregaDefault = function()
@@ -148,8 +158,10 @@ function productoViewModel()
             response = JSON.parse(response);
             alert(response.msg);
             self.cargarProductos();
+            //self.cargarPedidos();
+            //self.cargarDetallePedidos();
             self.confirmEnabled(true);
-            $('#modal').modal('hide');
+            $('#canasta').modal('hide');
           });
         break;
       case 'COMPRA':
@@ -159,12 +171,110 @@ function productoViewModel()
           alert(response.msg);
           self.cargarProductos();
           self.confirmEnabled(true);
-          $('#modal').modal('hide');
+          $('#canasta').modal('hide');
         });
         break;
       default:
         break;
     }
+  }
+
+  self.createCliente = function()
+  {
+    self.clienteFactory.create(ko.toJS(self.clienteACrear())).done(function(response)
+    {
+      if (!isNaN(response))
+      {
+        self.clienteACrear().id(response);
+        //console.log(self.clienteACrear());
+        self.clientesArray.push(self.clienteACrear());
+        self.clienteACrear(new cliente());
+      }
+    });
+  }
+
+  self.activateEditMode = function()
+  {
+    self.editMode(true);
+  }
+
+  self.savePreviousSelectedPedido = function()
+  {
+    if (self.editMode())
+    {
+      self.previousSelectedIdPedido(self.pedidoElegido().id());
+      self.savePedido(self.previousSelectedIdPedido());
+    }
+  }
+
+  self.savePedido = function(id)
+  {
+    self.finishEditMode();
+    $.each(self.pedidosDetalleArray(), function(i, item){
+        if (item.idmovimientoreferencia() == id)
+        {
+            self.pedidoFactory.updatePedido(ko.toJS(item)).done(function(response)
+            {
+              if (isNaN(response))
+              {
+                alert("Error al actualizar pedido.");
+              }
+            });
+        }
+    });
+  }
+
+  self.deliverPedido = function()
+  {
+    self.pedidoFactory.deliverPedido(ko.toJS(self.pedidoElegido())).done(function(response)
+    {
+      response = JSON.parse(response);
+      alert(response.msg);
+    });
+  }
+
+  self.finishEditMode = function()
+  {
+    self.editMode(false);
+  }
+
+  self.renderView = function(viewName)
+  {
+    $.ajax({
+      method: "GET",
+      url: "../controller/mainController.php",
+      data: {view: viewName},
+      success: function(response){$("#main-container").html(response);}
+    });
+
+  }
+
+  self.cargarPedidos = function()
+  {
+    self.pedidosArray([]);
+    self.pedidoFactory.getAll().done(function(response)
+    {
+      response = JSON.parse(response);
+      $.each(Object.keys(response), function(i, key)
+      {
+          self.pedidosArray.push(new pedido(response[key]));
+      });
+
+    });
+  }
+
+  self.cargarDetallePedidos = function()
+  {
+    self.pedidosDetalleArray([]);
+    self.pedidoFactory.getAllDetalle().done(function(response)
+    {
+      response = JSON.parse(response);
+      $.each(Object.keys(response), function(i, key)
+      {
+          self.pedidosDetalleArray.push(new pedidoDetalle(response[key])); //Una linea de pedido es un movimientostock con stockimpactado == 0
+      });
+
+    });
   }
 
   self.ready();

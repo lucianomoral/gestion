@@ -40,7 +40,7 @@ class movimientoStockService extends dataHandler {
       $movimientoStock = R::load('movimientostock', $id);
 
       //Si todavía no fue impactado
-      if ($movimientoStock->stockImpactado == 0)
+      if ($movimientoStock->stockimpactado == 0)
       {
         //Busco el producto del movimiento para actualizar el stock
         $producto = R::load('producto', $movimientoStock->idproducto);
@@ -63,6 +63,21 @@ class movimientoStockService extends dataHandler {
 
       }
 
+  }
+
+  public function update($params)
+  {
+
+    $movimientoStock = R::load('movimientostock', $params['id']);
+
+    $movimientoStock->cantidad = -$params['cantidad'];
+    $movimientoStock->stockimpactado = 0;
+
+    $response = R::store($movimientoStock);
+
+    $this->close();
+
+    return $response;
   }
 
 }
