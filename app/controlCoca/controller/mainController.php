@@ -73,6 +73,11 @@ if (isset($_POST['function']))
       $response = $ventaController->deleteLineaPedido($data);
       echo $response;
       break;
+    case 'updateCliente':
+      $clienteService = new clienteService();
+      $response = $clienteService->update($data);
+      echo $response;
+      break;
     default:
       break;
   }

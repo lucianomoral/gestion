@@ -29,6 +29,21 @@ class clienteService extends dataHandler
 
   }
 
+  public function update($params)
+  {
+    $cliente = R::load('cliente', $params['id']);
+
+    $cliente->nombre = $params['nombre'];
+    $cliente->direccion = $params['direccion'];
+
+    $id = R::store($cliente);
+
+    $this->close();
+
+    return $id;
+
+  }
+
 }
 
 ?>

@@ -21,7 +21,8 @@ function productoViewModel()
   self.fechaEntrega = ko.observable();
   self.confirmEnabled = ko.observable(true);
   self.pedidoElegido = ko.observable();
-  self.editMode = ko.observable(false);
+  self.editMode = ko.observable(false); //Solo aplica para pedidos
+  self.clienteAEditar = ko.observable(-1);
   self.sectionVisible = ko.observable();
   self.previousSelectedIdPedido = ko.observable();
 
@@ -210,6 +211,42 @@ function productoViewModel()
         self.clientesArray.push(self.clienteACrear());
         self.clienteACrear(new cliente());
       }
+    });
+  }
+
+  self.editCliente = function(id)
+  {
+    if (self.clienteAEditar() != -1)
+    {
+      $.each(self.clientesArray(), function(i, cliente)
+      {
+        if (cliente.id() == self.clienteAEditar())
+        {
+          self.saveCliente(cliente, id);
+          return false;
+        }
+      });
+    }
+
+    self.clienteAEditar(id);
+
+  }
+
+  self.saveCliente = function(cliente, id = null)
+  {
+    self.clienteFactory.update(ko.toJS(cliente)).done(function()
+    {
+      if (id)
+      {
+
+        self.clienteAEditar(id);
+
+      } else {
+
+        self.clienteAEditar(-1);
+
+      }
+
     });
   }
 

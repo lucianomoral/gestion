@@ -22,4 +22,14 @@ function clienteFactory()
     });
   }
 
+  self.update = function(data)
+  {
+    return $.ajax({
+      method: "POST",
+      data: {function: 'updateCliente',
+            data: data},
+      url: "../controller/mainController.php"
+    });
+  }
+
 }

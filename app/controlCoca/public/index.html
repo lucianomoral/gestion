@@ -108,18 +108,19 @@
               <th>Nombre</th>
               <th>Direccion</th>
               <th>Borrar</th>
-              <th>Editar</th>
-              <th>Guardar</th>
+              <th>Editar/Guardar</th>
             </tr>
           </thead>
           <tbody data-bind="foreach: {data:$root.clientesArray, as: 'cliente'}">
             <tr>
               <td data-bind="text: cliente.id"></td>
-              <td data-bind="text: cliente.nombre"></td>
-              <td data-bind="text: cliente.direccion"></td>
+              <td data-bind="text: cliente.nombre, visible: $root.clienteAEditar() != cliente.id()"></td>
+              <td data-bind="visible: $root.clienteAEditar() == cliente.id()"><input type="text" class="form-control" data-bind="textInput: cliente.nombre"></td>
+              <td data-bind="text: cliente.direccion, visible: $root.clienteAEditar() != cliente.id()"></td>
+              <td data-bind="visible: $root.clienteAEditar() == cliente.id()"><input type="text" class="form-control" data-bind="textInput: cliente.direccion"></td>
               <td><button type="button" class="btn btn-danger">Borrar</button></td>
-              <td><button type="button" class="btn btn-default">Editar</button></td>
-              <td><button type="button" class="btn btn-primary">Guardar</button></td>
+              <td data-bind="visible: $root.clienteAEditar() != cliente.id(), click: function(){$root.editCliente(cliente.id());}"><button type="button" class="btn btn-default">Editar</button></td>
+              <td data-bind="visible: $root.clienteAEditar() == cliente.id(), click: function(cliente){$root.saveCliente(cliente);}"><button type="button" class="btn btn-primary">Guardar</button></td>
             </tr>
           </tbody>
         </table>
