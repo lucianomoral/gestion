@@ -30,6 +30,25 @@ class ventaService extends dataHandler
 
     }
 
+    public function delete($params)
+    {
+      try {
+
+        $venta = R::load('venta', $params['id']);
+
+        R::trash($venta);
+
+        return true;
+
+      } catch (Exception $e) {
+
+        return false;
+
+      }
+
+
+    }
+
 }
 
 ?>

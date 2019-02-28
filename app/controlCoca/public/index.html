@@ -86,7 +86,7 @@
                 <td data-bind="text: lineaPedido.nombreproducto"></td>
                 <td data-bind="text: lineaPedido.cantidad, visible: !$root.editMode()"></td>
                 <td data-bind="visible: $root.editMode"><input type="number" class="form-control" data-bind="textInput: lineaPedido.cantidad"></td>
-                <td><button type="button" class="btn btn-danger">Borrar</button></td>
+                <td><button type="button" class="btn btn-danger" data-bind="click: $root.deletePedidoDetalle">Borrar</button></td>
               </tr>
             </tbody>
           </table>

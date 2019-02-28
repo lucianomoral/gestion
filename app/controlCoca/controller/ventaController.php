@@ -60,6 +60,15 @@ class ventaController extends dataHandler
     }
   }
 
+  public function getOrderAndDetailById($id)
+  {
+    $pedido = R::load('pedido', $id);
+    $pedidoDetalle = R::find('pedidodetalle', 'idmovimientoreferencia = :idmovimientoreferencia AND idtipooperacion = :idtipooperacion', ['idmovimientoreferencia' => $id, 'idtipooperacion' => tipoOperacionEnum::venta()]);
+
+    return json_encode(['pedido' => $pedido, 'pedidoDetalle' => $pedidoDetalle]);
+
+  }
+
   public function createOrder ($params)
   {
     try{
@@ -90,9 +99,11 @@ class ventaController extends dataHandler
 
         }
 
+        $data = $this->getOrderAndDetailById($params['idmovimientoreferencia']);
+
         $this->close();
 
-        return json_encode(["response" => 200, "status" => "OK", "msg" => "Pedido registrado correctamente."]);
+        return json_encode(["response" => 200, "status" => "OK", "msg" => "Pedido registrado correctamente.", "data" => $data]);
 
       } catch (Exception $e) {
 
@@ -100,6 +111,33 @@ class ventaController extends dataHandler
 
       }
 
+
+  }
+
+  public function deleteLineaPedido($params)
+  {
+    $movimientoStock = new movimientoStockService();
+
+    $deleteOk = $movimientoStock->delete($params);
+
+    if (!$deleteOk)
+    {
+      return json_encode(["response" => 400, "status" => "ER", "msg" => "Error al eliminar la linea."]);
+    }
+
+    if (empty(R::find('movimientostock', 'idmovimientoreferencia = :idmovimientoreferencia AND stockimpactado != 1', [':idmovimientoreferencia' => $params['idmovimientoreferencia']])))
+    {
+      $venta = new ventaService();
+
+      $venta->delete(['id' => $params['idmovimientoreferencia']]);
+
+      return json_encode(["response" => 200, "status" => "OK", "msg" => "Linea y pedido eliminado.", "action" => 'deletePedido']);
+
+    } else {
+
+      return json_encode(["response" => 200, "status" => "OK", "msg" => "Linea eliminada.", "action" => '']);
+
+    }
 
   }
 

@@ -80,6 +80,26 @@ class movimientoStockService extends dataHandler {
     return $response;
   }
 
+  public function delete($params)
+  {
+    $movimientoStock = R::load('movimientostock', $params['id']);
+
+    try
+    {
+      R::trash($movimientoStock);
+
+      return true;
+
+    } catch (Exception $e){
+
+      return false;
+
+    }
+
+    return $response;
+
+  }
+
 }
 
 ?>

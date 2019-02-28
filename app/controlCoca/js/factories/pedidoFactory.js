@@ -43,4 +43,14 @@ function pedidoFactory()
     });
   }
 
+  self.deletePedidoDetalle = function(data)
+  {
+    return $.ajax({
+      method:"POST",
+      data: {function: 'deletePedidoDetalle',
+            data: data},
+      url: '../controller/mainController.php'
+    });
+  }
+
 }

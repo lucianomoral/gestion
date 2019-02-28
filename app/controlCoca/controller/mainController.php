@@ -68,6 +68,11 @@ if (isset($_POST['function']))
       $response = $ventaController->deliverPedido($data);
       echo $response;
       break;
+    case 'deletePedidoDetalle':
+      $ventaController = new ventaController();
+      $response = $ventaController->deleteLineaPedido($data);
+      echo $response;
+      break;
     default:
       break;
   }

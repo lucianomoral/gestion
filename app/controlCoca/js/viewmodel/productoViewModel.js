@@ -59,6 +59,7 @@ function productoViewModel()
 
   }
 
+  //Se llena el array de productos
   self.cargarProductos = function()
   {
 
@@ -78,6 +79,7 @@ function productoViewModel()
 
   }
 
+  //Se llena el array de clientes
   self.cargarClientes = function()
   {
     self.clientesArray([]);
@@ -151,16 +153,35 @@ function productoViewModel()
   self.confirmOperation = function(tipoOperacion)
   {
     switch (tipoOperacion) {
+      //Si el tipo de operacion es VENTA
       case 'VENTA':
+        //Se pasa como parametro la canasta de productos por un lado y  por el otro los datos de la venta
         self.productoCanastaFactory.confirmOrder({ productos: ko.toJS(self.productosArray()),
           venta: {idcliente: self.clienteElegido().id() , fechaentrega: self.fechaEntrega()} }).done(function(response)
           {
+            //Se parsea la respuesta y se muestra el mensaje que viene con ella
             response = JSON.parse(response);
             alert(response.msg);
+
+            //Se parsean los datos porque vienen como un string en vez de como JSON
+            data = JSON.parse(response.data);
+
+            //Se agrega el pedido como cabecera al desplegable de pedidos
+            self.pedidosArray.push(new pedido(data.pedido));
+
+            //Se recorren las lineas de pedido nuevas y se agregan
+            $.each(Object.keys(data.pedidoDetalle), function(i,key)
+            {
+              self.pedidosDetalleArray.push(new pedidoDetalle(data.pedidoDetalle[key]));
+            });
+
+            //Se reinicia la canasta de productos
             self.cargarProductos();
-            //self.cargarPedidos();
-            //self.cargarDetallePedidos();
+
+            //Se habilita nuevamente el boton de Confirmar
             self.confirmEnabled(true);
+
+            //Se esconde el modal
             $('#canasta').modal('hide');
           });
         break;
@@ -186,7 +207,6 @@ function productoViewModel()
       if (!isNaN(response))
       {
         self.clienteACrear().id(response);
-        //console.log(self.clienteACrear());
         self.clientesArray.push(self.clienteACrear());
         self.clienteACrear(new cliente());
       }
@@ -224,13 +244,68 @@ function productoViewModel()
     });
   }
 
+  self.deleteAllLinesForSelectedOrderFromArray = function()
+  {
+    var flag = true;
+    while(flag)
+    {
+      flag=false;
+      $.each(self.pedidosDetalleArray(), function(i, linea)
+      {
+        if (self.pedidoElegido().id() == linea.idmovimientoreferencia())
+        {
+          self.pedidosDetalleArray.splice(i,1);
+          flag=true;
+          return false;
+        }
+      });
+    }
+  }
+
+  self.deleteSelectedOrderFromArray = function()
+  {
+    $.each(self.pedidosArray(), function(i, pedido)
+    {
+      if (self.pedidoElegido().id() == pedido.id())
+      {
+        self.pedidosArray.splice(i, 1);
+        return false; //Para que salga del each cuando ya encontró el pedido
+      }
+    });
+  }
+
   self.deliverPedido = function()
   {
     self.pedidoFactory.deliverPedido(ko.toJS(self.pedidoElegido())).done(function(response)
     {
       response = JSON.parse(response);
       alert(response.msg);
+      self.cargarProductos();
+      if (response.status == "OK")
+      {
+        self.deleteAllLinesForSelectedOrderFromArray();
+        self.deleteSelectedOrderFromArray();
+
+      }
     });
+
+  }
+
+  self.deletePedidoDetalle = function(pedidoDetalle)
+  {
+    self.pedidoFactory.deletePedidoDetalle(pedidoDetalle).done(function(response)
+    {
+        response = JSON.parse(response);
+        if (response.status == "OK")
+        {
+            self.pedidosDetalleArray.remove(pedidoDetalle);
+
+            if (response.action == 'deletePedido')
+            {
+              self.deleteSelectedOrderFromArray();
+            }
+        }
+    })
   }
 
   self.finishEditMode = function()
