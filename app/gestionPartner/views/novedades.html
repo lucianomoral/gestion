@@ -90,7 +90,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-info" data-bind="click: $root.NuevaNovedad">Guardar</button>
+                <button class="btn btn-info" data-bind="click: function(){$root.saveEnabled(false); $root.NuevaNovedad();}, enable: $root.saveEnabled">Guardar</button>
                 <button class="btn btn-danger" data-bind="click: $root.Cancelar">Cancelar</button>
                 </div>
             </div>

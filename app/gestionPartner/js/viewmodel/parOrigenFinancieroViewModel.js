@@ -21,6 +21,8 @@ function parOrigenFinancieroViewModel(){
     self.esentrega = ko.observable(false);
     self.cobradoeneldia = ko.observable(true);
     self.novedadACrear = ko.observable(new Novedad());
+    self.saveEnabled = ko.observable(true);
+    self.validadorEnvioFormArray = ko.observable([{id: 1, sent: false}]);
 
     ko.computed(function() {
         return ko.toJSON(self.conceptoElegido());
@@ -102,6 +104,15 @@ function parOrigenFinancieroViewModel(){
 
     self.NuevaNovedad = function(){
 
+        var nextIndexToSent = self.validadorEnvioFormArray().length - 1;
+
+        if (self.validadorEnvioFormArray()[nextIndexToSent].sent)
+        {
+            alert ("Se va a enviar dos veces la información.");
+            self.saveEnabled(true);
+            return false;
+        }
+
         if(!self.cobradoeneldia()){
             self.novedadACrear().valorpendiente(self.novedadACrear().valororiginal());
         } else {
@@ -116,6 +127,7 @@ function parOrigenFinancieroViewModel(){
 
         } else {
 
+            self.validadorEnvioFormArray()[nextIndexToSent].sent = true;
             self.parOrigenFinancieroFactory.create(json).done(function(data){
                 
                 data = JSON.parse(data);
@@ -132,14 +144,19 @@ function parOrigenFinancieroViewModel(){
                         self.direccionElegida(self.direccionesArray()[0]);
                         self.novedadACrear(new Novedad());
                         self.Cancelar();
+                        nextIndexToSent = nextIndexToSent + 1;
+                        self.validadorEnvioFormArray().push({id: nextIndexToSent, sent: false});
 
                     })
                 } else {
                     alert("Error al crear la novedad");
+                    self.validadorEnvioFormArray()[nextIndexToSent].sent = false;
                 }
             });
 
         }
+
+        self.saveEnabled(true);
        
     }
 
