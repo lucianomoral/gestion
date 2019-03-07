@@ -15,16 +15,26 @@ function productoViewModel()
   self.pedidosDetalleArray = ko.observableArray();
 
   //Observables
+  //Clientes
   self.clienteACrear = ko.observable(new cliente());
   self.clienteElegido = ko.observable();
-  self.tipoOperacion = ko.observable();
+  self.clienteAEditar = ko.observable(-1);
+
+  //Productos
+  self.productoACrear = ko.observable(new producto());
+  self.productoElegido = ko.observable();
+  self.productoAEditar = ko.observable(-1);
+
+  //Pedidos
+  self.pedidoElegido = ko.observable();
+  self.previousSelectedIdPedido = ko.observable();
+  self.editMode = ko.observable(false); //Solo aplica para pedidos
   self.fechaEntrega = ko.observable();
   self.confirmEnabled = ko.observable(true);
-  self.pedidoElegido = ko.observable();
-  self.editMode = ko.observable(false); //Solo aplica para pedidos
-  self.clienteAEditar = ko.observable(-1);
+
+  //Otros
+  self.tipoOperacion = ko.observable();
   self.sectionVisible = ko.observable();
-  self.previousSelectedIdPedido = ko.observable();
 
   self.ready = function()
   {
@@ -248,6 +258,40 @@ function productoViewModel()
       }
 
     });
+  }
+
+  self.createProducto = function()
+  {
+
+    var fixedPath = "../img/";
+    var file = document.getElementById('fotoProducto').files[0];
+    var fileName = file.name;
+
+    var reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onloadend = function()
+    {
+      self.productoACrear().rutafoto(fixedPath + file.name);
+
+      self.productoFactory.create(reader.result, fileName, ko.toJS(self.productoACrear)).done(function(response)
+      {
+        if (isNaN(response))
+        {
+          alert("Error al crear el producto");
+
+        } else {
+
+          self.productoACrear().id(response);
+          self.productosArray.push(new productoCanasta(ko.toJS(self.productoACrear())));
+          self.productoACrear(new producto());
+          document.getElementById('fotoProducto').value = "";
+
+        }
+      });
+    }
+
   }
 
   self.activateEditMode = function()

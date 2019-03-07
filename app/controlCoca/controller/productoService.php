@@ -15,6 +15,22 @@ class productoService extends dataHandler {
 
   }
 
+  public function create($params)
+  {
+
+    $producto = R::dispense('producto');
+
+    $producto->nombre = $params['nombre'];
+    $producto->idfamilia = $params['idfamilia'];
+    $producto->stock = 0;
+    $producto->rutafoto = $params['rutafoto'];
+
+    $id = R::store($producto);
+
+    return $id;
+
+  }
+
 }
 
 ?>

@@ -37,6 +37,7 @@ if (isset($_GET['model']))
     }
 }
 
+
 if (isset($_POST['function']))
 {
   $function = $_POST['function'];
@@ -78,6 +79,20 @@ if (isset($_POST['function']))
       $response = $clienteService->update($data);
       echo $response;
       break;
+    case 'createProduct':
+      $productoService = new productoService();
+      if (isset($_POST['file']))
+      {
+
+        $path = "../img/" . $_POST['file']['fileName'];
+
+        $fileData = explode(',', $_POST['file']['data']);
+
+        $status = file_put_contents($path, base64_decode($fileData[1]));
+
+      }
+      $response = $productoService->create($data);
+      echo $response;
     default:
       break;
   }

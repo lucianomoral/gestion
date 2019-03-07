@@ -56,7 +56,7 @@
               <li><a data-bind="click: function(){$root.sectionVisible('PEDIDOS');}"> Entregar pedidos</a></li>
               <li><a data-toggle="modal" data-target="#canasta" data-bind="click: function(){$root.tipoOperacion('VENTA');}">Crear pedidos</a></li>
               <li><a data-bind="click: function(){$root.sectionVisible('CLIENTES');}">Clientes</a></li>
-              <li><a >Productos</a></li>
+              <li><a data-bind="click: function(){$root.sectionVisible('PRODUCTOS');}">Productos</a></li>
             </ul>
           </div>
         </div>
@@ -126,6 +126,34 @@
         </table>
 
         <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#nuevoCliente">Nuevo cliente</button>
+
+      </div>
+
+      <div id="productos" data-bind="if: $root.sectionVisible() == 'PRODUCTOS'">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Id.</th>
+              <th>Nombre</th>
+              <th>Stock</th>
+              <th>Borrar</th>
+              <th>Editar/Guardar</th>
+            </tr>
+          </thead>
+          <tbody data-bind="foreach: {data:$root.productosArray, as: 'producto'}">
+            <tr>
+              <td data-bind="text: producto.id"></td>
+              <td data-bind="visible: $root.productoAEditar() != producto.id(), text: producto.nombre"></td>
+              <td data-bind="visible: $root.productoAEditar() == producto.id()"><input type="text" class="form-control" data-bind="textInput: producto.nombre"></td>
+              <td data-bind="text: producto.stock"></td>
+              <td><button type="button" class="btn btn-danger">Borrar</button></td>
+              <td data-bind="visible: $root.productoAEditar() != producto.id(), click: function(){$root.productoAEditar(producto.id());}"><button type="button" class="btn btn-default">Editar</button></td>
+              <td data-bind="visible: $root.productoAEditar() == producto.id(), click: function(producto){$root.productoAEditar(-1);}"><button type="button" class="btn btn-primary">Guardar</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#nuevoProducto">Nuevo producto</button>
 
       </div>
 
@@ -224,6 +252,45 @@
             <!-- PIE -->
             <div class="modal-footer">
               <button type="button" class="btn btn-success" data-dismiss="modal" data-bind="click: $root.createCliente">Crear</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+            <!-- /PIE -->
+
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL PRODUCTO NUEVO-->
+      <div id="nuevoProducto" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- CONTENIDO -->
+          <div class="modal-content">
+
+            <!-- CABECERA -->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Ingresar datos</h4>
+            </div>
+            <!-- /CABECERA -->
+
+            <!-- CUERPO -->
+            <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="form-group">
+                    <label class="label-control">Nombre: </label>
+                    <input type="text" class="form-control" data-bind="textInput: $root.productoACrear().nombre">
+                  </div>
+                  <div class="form-group">
+                    <label class="label-control">Foto: </label>
+                    <input type="file" class="btn btn-file" data-bind="" id="fotoProducto">
+                  </div>
+                </div>
+            </div>
+            <!-- /CUERPO -->
+
+            <!-- PIE -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal" data-bind="click: $root.createProducto">Crear</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
             <!-- /PIE -->
